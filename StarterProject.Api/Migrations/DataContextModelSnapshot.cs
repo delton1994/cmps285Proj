@@ -50,8 +50,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 72, 252, 223, 179, 222, 44, 223, 235, 33, 14, 203, 243, 33, 246, 126, 5, 174, 197, 77, 104 },
-                            PasswordSalt = new byte[] { 132, 23, 40, 63, 23, 162, 129, 54, 0, 226, 20, 140, 136, 1, 24, 66 },
+                            PasswordHash = new byte[] { 229, 200, 4, 247, 197, 7, 4, 213, 133, 199, 228, 100, 211, 148, 8, 186, 157, 36, 166, 40 },
+                            PasswordSalt = new byte[] { 229, 173, 211, 167, 209, 178, 125, 29, 42, 75, 36, 28, 60, 191, 205, 35 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -61,8 +61,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 29, 30, 64, 10, 238, 250, 234, 208, 104, 20, 244, 139, 218, 92, 96, 70, 176, 36, 168, 46 },
-                            PasswordSalt = new byte[] { 177, 36, 131, 49, 227, 95, 239, 65, 142, 228, 174, 138, 36, 139, 178, 142 },
+                            PasswordHash = new byte[] { 112, 142, 194, 124, 44, 203, 219, 67, 22, 207, 136, 107, 90, 243, 184, 213, 61, 115, 167, 170 },
+                            PasswordSalt = new byte[] { 94, 109, 228, 224, 25, 29, 178, 179, 105, 161, 153, 224, 13, 99, 161, 27 },
                             Role = "Admin",
                             Username = "Delton94"
                         });
