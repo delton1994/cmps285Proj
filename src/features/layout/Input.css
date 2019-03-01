@@ -1,0 +1,18 @@
+.input-container {
+    padding: 6px 2px 6px 0px;
+}
+
+input {
+    border: 2px solid  hsl(0, 0%, 57%);
+    border-radius: 5px;
+    font-size: 0.9rem;
+    height: 30px;
+    margin-top: 5px;
+    outline: none;
+    padding-left: 12px;
+    width: 95%;
+}
+
+input:focus {
+    box-shadow: 0px 0px 1px 2px hsl(211, 60%, 80%);
+}

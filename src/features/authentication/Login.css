@@ -1,0 +1,56 @@
+.form-container {
+    background-color: hsl(0, 0%, 98%);
+    border-radius: 4px;
+    border-top: 5px solid  hsl(165, 68%, 61%);
+    height: 325px;
+    width: 340px;
+}
+
+.header {
+    background-color: hsl(0, 0%, 91%);
+    padding: 18px 24px;
+    margin: 0px 0px 18px 0px;
+}
+
+.page-container {
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.login-button {
+    align-self: flex-end;
+    background-color: hsl(165, 0%, 80%);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    flex: 1;
+    font-size: 1.1rem;
+    height: 35px;
+    margin-top: 28px;
+    width: 130px;
+}
+
+.login-button:hover{
+    background-color:  hsl(165, 68%, 61%);
+}
+
+.login-button:active, .login-button:focus {
+    box-shadow: 0px 0px 1px 1px  hsl(165, 68%, 61%);;
+    outline: none;
+}
+
+.login-button:disabled {
+    background-color: hsla(0, 0%, 90%, 1);
+    color: black;
+    cursor: not-allowed;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    margin-right: 48px;
+}
