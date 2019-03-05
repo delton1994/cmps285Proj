@@ -1,0 +1,13 @@
+.page-content {
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 4px;
+    flex: 1;
+    margin: 68px 24px 80px;
+    padding: 12px;
+  }
+
+.page-header {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 3px 16px;
+}
