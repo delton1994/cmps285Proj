@@ -24,7 +24,6 @@ namespace StarterProject.Api.Features.Languages
         public IEnumerable<Language> GetAllLanguages()
         {
             return _language.Languages
-                .OrderBy(p => p.LanguageId)
                 .ToList();
         }
 
