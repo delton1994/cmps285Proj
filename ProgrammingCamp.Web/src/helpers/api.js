@@ -7,7 +7,9 @@ const baseUrl = process.env.REACT_APP_BASE_API_URL;
 
 const apiHelper = {
   get(url, params){
-    return fetch(url)
+    return fetch(`${baseUrl}${url}`, {
+      headers: this.headers
+    })
     .then(response => response.json())
     .catch(error => {
        console.log(error);
@@ -16,9 +18,11 @@ const apiHelper = {
   },
   headers: defaultHeaders,
   setAuthHeader(value){
+    console.log('setting off header', value)
     this.headers = {
+      
       ...defaultHeaders,
-      authorization: value
+      Authorization: value
     };
   },
   post(url, content) {

@@ -5,8 +5,8 @@ import Input from '../layout/Input';
 
 class Login extends Component {
   state = {
-    password: 'admin', // TODO: Set default to empty string once hooked to API
-    username: 'admin', // TODO: Set default to empty string once hooked to API
+    password: '', // TODO: Set default to empty string once hooked to API
+    username: '', // TODO: Set default to empty string once hooked to API
   };
 
   handleInputChanged = (value, valueName) => {
