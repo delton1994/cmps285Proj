@@ -2,19 +2,12 @@ import React, {Component} from 'react';
 import Page from './Page';
 import apiHelper from '../../helpers/api';
 
-class Study extends Component {
-  handleGetUsers = async() => {
-    const response = await apiHelper.get('Users')
-    if(response){
-      console.log(response)
-    }
-  }
+class Study extends Component { 
   render() {
     return (
-      <Page header="Study Almost">
+      <Page header="Almost Studying..">
         <div>
-        if I knew how, I would let you study.
-        <button onClick={this.handleGetUsers}>Get Users</button>
+          If I knew how, I would let you study.
         </div>
       </Page>
     );
