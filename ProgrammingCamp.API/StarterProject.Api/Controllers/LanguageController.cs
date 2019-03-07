@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,8 @@ namespace StarterProject.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Language>> Get()
+        [ProducesResponseType(typeof(List<LanguageGetDto>), (int)HttpStatusCode.OK)]
+        public ActionResult Get()
         {
             try
             {

@@ -7,8 +7,8 @@ namespace StarterProject.Api.Features.Questions
 {
     public interface IQuestionRepository
     {
-        IEnumerable<Question> GetAllQuestions();
-        List<Question> GetQuestionsByName(string name);
+      
+        List<QuestionGetDto> GetAllQuestions();
 
     }
 
@@ -21,17 +21,17 @@ namespace StarterProject.Api.Features.Questions
             _question = context;
         }
 
-        public IEnumerable<Question> GetAllQuestions()
-        {
-            return _question.Questions
-                .OrderBy(p => p.LanguageId)
-                .ToList();
-        }
 
-        public List<Question> GetQuestionsByName(string name)
+
+        public List<QuestionGetDto> GetAllQuestions()
         {
-            return _question.Questions
-                .Where(p => p.Name == name)
+            return _question
+                .Set<Question>()
+                .Select(x => new QuestionGetDto()
+                {
+                    Name = x.Name,
+                    LanguageId = x.LanguageId
+                })
                 .ToList();
         }
 

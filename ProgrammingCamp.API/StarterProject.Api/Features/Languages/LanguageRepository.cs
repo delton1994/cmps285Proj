@@ -7,8 +7,8 @@ namespace StarterProject.Api.Features.Languages
 {
     public interface ILanguageRepository
     {
-        IEnumerable<Language> GetAllLanguages();
-        List<Language> GetLanguagesByName(string name);
+       
+        List<LanguageGetDto> GetAllLanguages();
 
     }
 
@@ -21,19 +21,20 @@ namespace StarterProject.Api.Features.Languages
             _language = context;
         }
 
-        public IEnumerable<Language> GetAllLanguages()
+        public List<LanguageGetDto> GetAllLanguages()
         {
-            return _language.Languages
+            return _language
+                .Set<Language>()
+                .Select(x => new LanguageGetDto()
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                })
                 .ToList();
-        }
 
-        public List<Language> GetLanguagesByName(string name)
-        {
-            return _language.Languages
-                .Where(p => p.Name == name)
-                .ToList();
         }
+    }
 
      
-    }
 }
+

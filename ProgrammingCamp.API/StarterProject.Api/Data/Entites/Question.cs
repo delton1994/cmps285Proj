@@ -13,4 +13,10 @@ namespace StarterProject.Api.Data.Entites
         public List<Choice> Choices { get; set; }
         
     }
+
+    public class QuestionGetDto
+    {
+        public string Name { get; set; }
+        public int LanguageId { get; set; }
+    }
 }

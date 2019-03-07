@@ -9,5 +9,9 @@
         public Question Question { get; set; }
     }
 
-
+    public class ChoiceGetDto
+    {
+        public string Name { get; set; }
+        public int QuestionId { get; set; }
+    }
 }
