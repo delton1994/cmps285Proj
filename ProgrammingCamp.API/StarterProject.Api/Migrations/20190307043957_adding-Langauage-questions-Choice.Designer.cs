@@ -10,8 +10,8 @@ using StarterProject.Api.Data;
 namespace StarterProject.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190304192726_TableContextUpdate")]
-    partial class TableContextUpdate
+    [Migration("20190307043957_adding-Langauage-questions-Choice")]
+    partial class addingLangauagequestionsChoice
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -268,35 +268,35 @@ namespace StarterProject.Api.Migrations
 
             modelBuilder.Entity("StarterProject.Api.Data.Entites.Language", b =>
                 {
-                    b.Property<int>("LanguageId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
-                    b.HasKey("LanguageId");
+                    b.HasKey("Id");
 
                     b.ToTable("Languages");
 
                     b.HasData(
                         new
                         {
-                            LanguageId = 1,
+                            Id = 1,
                             Name = " JavaScript"
                         },
                         new
                         {
-                            LanguageId = 2,
+                            Id = 2,
                             Name = "Html"
                         },
                         new
                         {
-                            LanguageId = 3,
+                            Id = 3,
                             Name = "Java"
                         },
                         new
                         {
-                            LanguageId = 4,
+                            Id = 4,
                             Name = "C#"
                         });
                 });
@@ -399,8 +399,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 244, 119, 174, 128, 112, 142, 6, 58, 16, 160, 39, 83, 128, 33, 230, 171, 41, 157, 153, 231 },
-                            PasswordSalt = new byte[] { 251, 145, 107, 85, 2, 181, 78, 21, 227, 253, 236, 87, 165, 19, 37, 248 },
+                            PasswordHash = new byte[] { 153, 21, 170, 54, 71, 111, 248, 17, 1, 147, 113, 179, 227, 139, 21, 113, 244, 5, 46, 201 },
+                            PasswordSalt = new byte[] { 126, 176, 228, 27, 172, 213, 157, 92, 158, 35, 40, 194, 93, 246, 95, 78 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -410,8 +410,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 114, 232, 116, 101, 24, 130, 22, 52, 240, 146, 216, 27, 56, 120, 71, 237, 106, 156, 122, 209 },
-                            PasswordSalt = new byte[] { 178, 28, 235, 255, 173, 208, 217, 91, 63, 80, 195, 51, 243, 202, 241, 171 },
+                            PasswordHash = new byte[] { 230, 182, 78, 141, 82, 177, 86, 88, 200, 156, 238, 60, 5, 158, 78, 3, 95, 66, 108, 74 },
+                            PasswordSalt = new byte[] { 165, 178, 219, 232, 222, 146, 78, 75, 27, 65, 141, 40, 212, 44, 10, 100 },
                             Role = "Admin",
                             Username = "Delton94"
                         });

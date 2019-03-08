@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StarterProject.Api.Migrations
 {
-    public partial class TableContext : Migration
+    public partial class addingLangauagequestionsChoice : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,13 +12,13 @@ namespace StarterProject.Api.Migrations
                 name: "Languages",
                 columns: table => new
                 {
-                    LanguageId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Languages", x => x.LanguageId);
+                    table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -27,8 +27,8 @@ namespace StarterProject.Api.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    LanguageId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    LanguageId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -37,7 +37,7 @@ namespace StarterProject.Api.Migrations
                         name: "FK_Questions_Languages_LanguageId",
                         column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "LanguageId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -64,7 +64,7 @@ namespace StarterProject.Api.Migrations
 
             migrationBuilder.InsertData(
                 table: "Languages",
-                columns: new[] { "LanguageId", "Name" },
+                columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
                     { 1, " JavaScript" },
@@ -78,14 +78,14 @@ namespace StarterProject.Api.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 columns: new[] { "PasswordHash", "PasswordSalt" },
-                values: new object[] { new byte[] { 249, 192, 162, 124, 237, 94, 14, 179, 204, 169, 192, 83, 119, 250, 121, 210, 153, 168, 122, 174 }, new byte[] { 100, 253, 93, 129, 69, 93, 193, 169, 192, 8, 140, 99, 35, 144, 218, 18 } });
+                values: new object[] { new byte[] { 153, 21, 170, 54, 71, 111, 248, 17, 1, 147, 113, 179, 227, 139, 21, 113, 244, 5, 46, 201 }, new byte[] { 126, 176, 228, 27, 172, 213, 157, 92, 158, 35, 40, 194, 93, 246, 95, 78 } });
 
             migrationBuilder.UpdateData(
                 table: "Users",
                 keyColumn: "Id",
                 keyValue: 2,
                 columns: new[] { "PasswordHash", "PasswordSalt" },
-                values: new object[] { new byte[] { 56, 14, 106, 216, 209, 123, 25, 146, 144, 8, 167, 5, 8, 145, 168, 69, 208, 185, 169, 251 }, new byte[] { 193, 1, 4, 139, 187, 67, 74, 48, 28, 27, 128, 65, 207, 87, 48, 157 } });
+                values: new object[] { new byte[] { 230, 182, 78, 141, 82, 177, 86, 88, 200, 156, 238, 60, 5, 158, 78, 3, 95, 66, 108, 74 }, new byte[] { 165, 178, 219, 232, 222, 146, 78, 75, 27, 65, 141, 40, 212, 44, 10, 100 } });
 
             migrationBuilder.InsertData(
                 table: "Questions",
@@ -124,7 +124,7 @@ namespace StarterProject.Api.Migrations
                     { 17, true, "A general purpose computer programing language", 5 },
                     { 16, false, "To be or not to be", 4 },
                     { 15, false, "To clean the house ", 4 },
-                    { 14, true, "To do some homework", 4 },
+                    { 14, false, "To do some homework", 4 },
                     { 13, true, "To create a web page", 4 },
                     { 12, false, "Hungry Taffy-Maker Laughing", 3 },
                     { 11, false, "Huge Text-Maker Language", 3 },

@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
+using StarterProject.Api.Features.Choices;
+using StarterProject.Api.Features.Languages;
+using StarterProject.Api.Features.Questions;
 using StarterProject.Api.Features.Users;
 using StarterProject.Api.Helpers;
 using StarterProject.Api.Infrastructure;
@@ -44,6 +47,9 @@ namespace StarterProject.Api
             SetupAuthentication(services);
             SetupAuthorization(services);
             SetupCustomDependencies(services);
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<IChoiceRepository, ChoiceRepository>();
         }
 
         private void SetupDatabase(IServiceCollection services)
