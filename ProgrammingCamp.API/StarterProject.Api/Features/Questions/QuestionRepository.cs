@@ -2,6 +2,7 @@
 using System.Linq;
 using StarterProject.Api.Data;
 using StarterProject.Api.Data.Entites;
+using StarterProject.Api.Features;
 
 namespace StarterProject.Api.Features.Questions
 {
@@ -14,23 +15,22 @@ namespace StarterProject.Api.Features.Questions
 
     public class QuestionRepository : IQuestionRepository
     {
-        private readonly DataContext _question;
+        private readonly DataContext _context;
 
         public QuestionRepository(DataContext context)
         {
-            _question = context;
+            _context = context;
         }
 
 
 
         public List<QuestionGetDto> GetAllQuestions()
         {
-            return _question
-                .Set<Question>()
+            return _context.Set<Question>()
                 .Select(x => new QuestionGetDto()
                 {
-                    Name = x.Name,
-                    LanguageId = x.LanguageId
+                    LanguageId = x.LanguageId,
+                    Name = x.Name
                 })
                 .ToList();
         }

@@ -28,7 +28,8 @@ namespace StarterProject.Api.Controllers
         {
             try
             {
-                return Ok(_languageRepository.GetAllLanguages());
+                 var lang =_languageRepository.GetAllLanguages();
+                 return Ok(lang);
             }
             catch (Exception ex)
             {

@@ -26,9 +26,10 @@ namespace StarterProject.Api.Features.Choices
                 .Set<Choice>()
                 .Select(x => new ChoiceGetDto()
                 {
-                    Name = x.Name,
-                    QuestionId = x.QuestionId
+                    QuestionId = x.QuestionId,
+                    Name = x.Name
                 })
+               
                 .ToList();
         }
 
