@@ -13,5 +13,6 @@
     {
         public string Name { get; set; }
         public int QuestionId { get; set; }
+        public bool IsAnswer { get; set; }
     }
 }

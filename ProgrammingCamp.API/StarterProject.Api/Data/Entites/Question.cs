@@ -18,5 +18,6 @@ namespace StarterProject.Api.Data.Entites
     {
         public string Name { get; set; }
         public int LanguageId { get; set; }
+        public List<ChoiceGetDto> Choices { get; set; }
     }
 }

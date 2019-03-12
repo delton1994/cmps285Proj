@@ -40,7 +40,7 @@ namespace StarterProject.Api.Controllers
                 return BadRequest("Failed to get Question. Please try again.");
             }
         }
-        [HttpGet("controller/{languageID:int}")]
+        [HttpGet("controller/{languageId:int}")]
         [ProducesResponseType(typeof(List<QuestionGetDto>), (int)HttpStatusCode.OK)]
         public IActionResult GetById([FromRoute] int languageId)
         {

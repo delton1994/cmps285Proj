@@ -14,16 +14,16 @@ namespace StarterProject.Api.Features.Languages
 
     public class LanguageRepository : ILanguageRepository
     {
-        private readonly DataContext _language;
+        private readonly DataContext _context;
 
         public LanguageRepository(DataContext context)
         {
-            _language = context;
+            _context = context;
         }
 
         public List<LanguageGetDto> GetAllLanguages()
         {
-            return _language
+            return _context
                 .Set<Language>()
                 .Select(x => new LanguageGetDto()
                 {

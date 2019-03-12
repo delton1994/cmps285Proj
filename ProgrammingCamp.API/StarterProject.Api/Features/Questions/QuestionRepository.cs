@@ -29,7 +29,15 @@ namespace StarterProject.Api.Features.Questions
                 .Select(x => new QuestionGetDto()
                 {
                     Name = x.Name,
-                    LanguageId = x.LanguageId
+                    LanguageId = x.LanguageId, 
+                    Choices = x.Choices.Select(r=> new ChoiceGetDto()
+                    {
+                        Name = r.Name,
+                        QuestionId = x.Id,
+                        IsAnswer = r.IsAnswer
+
+                    })
+                        .ToList()
                 })
                 .Where (x=> x.LanguageId == languageId)
                 .ToList();
@@ -41,7 +49,15 @@ namespace StarterProject.Api.Features.Questions
                 .Select(x => new QuestionGetDto()
                 {
                     Name = x.Name,
-                    LanguageId = x.LanguageId
+                    LanguageId = x.LanguageId,
+                    Choices = x.Choices.Select(r => new ChoiceGetDto()
+                        {
+                            Name = r.Name,
+                            QuestionId = x.Id,
+                            IsAnswer = r.IsAnswer
+
+                        })
+                        .ToList()
                 })
                 .ToList();
         }
