@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import {Route, Switch} from 'react-router-dom';
-
 import './MainLayout.css';
 import NavBar from './NavBar';
 import Page from './Page';
