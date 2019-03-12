@@ -7,25 +7,36 @@ namespace StarterProject.Api.Features.Questions
 {
     public interface IQuestionRepository
     {
-      
+        List<QuestionGetDto> GetById(int languageId); 
         List<QuestionGetDto> GetAllQuestions();
 
     }
 
     public class QuestionRepository : IQuestionRepository
     {
-        private readonly DataContext _question;
+        private readonly DataContext _context;
 
         public QuestionRepository(DataContext context)
         {
-            _question = context;
+            _context = context;
         }
 
+        public List<QuestionGetDto> GetById(int languageId)
 
-
+        {
+            return _context
+                 .Set<Question>()
+                .Select(x => new QuestionGetDto()
+                {
+                    Name = x.Name,
+                    LanguageId = x.LanguageId
+                })
+                .Where (x=> x.LanguageId == languageId)
+                .ToList();
+        }
         public List<QuestionGetDto> GetAllQuestions()
         {
-            return _question
+            return _context
                 .Set<Question>()
                 .Select(x => new QuestionGetDto()
                 {

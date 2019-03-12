@@ -42,7 +42,8 @@ namespace StarterProject.Api
                 {
                     options.RegisterValidatorsFromAssemblyContaining<Startup>();
                 });
-            
+             
+
             SetupDatabase(services);
             SetupAuthentication(services);
             SetupAuthorization(services);
