@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StarterProject.Api.Data.Entites
 {
@@ -11,7 +9,6 @@ namespace StarterProject.Api.Data.Entites
         public List<Choice> Choices { get; set; }
         public int LanguageId { get; set; }
         public Language Language { get; set;}
-        
     }
 
     public class QuestionGetDto 

@@ -19,7 +19,6 @@ namespace StarterProject.Api.Features.Choices
             _choice = context;
         }
 
-
         public List<ChoiceGetDto> GetAllChoices()
         {
             return _choice
@@ -29,7 +28,6 @@ namespace StarterProject.Api.Features.Choices
                     QuestionId = x.QuestionId,
                     Name = x.Name
                 })
-               
                 .ToList();
         }
 
