@@ -12,19 +12,20 @@ namespace StarterProject.Api.Controllers
     public class QuestionController : ControllerBase
     {
         private readonly IQuestionRepository _context;
-        
+
 
         public QuestionController(IQuestionRepository context)
         {
             _context = context;
         }
 
-        [HttpGet("[controller]")]
+        [HttpGet()]
         [ProducesResponseType(typeof(List<QuestionGetDto>), (int) HttpStatusCode.OK)]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] int languageId)
         {
-               var quest = _context.GetAllQuestions();
-               return Ok(quest);
+            
+            var quest = _context.GetAllQuestions(languageId);
+            return Ok(quest);
         }
     }
 }
