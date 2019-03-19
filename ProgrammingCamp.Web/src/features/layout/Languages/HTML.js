@@ -1,14 +1,13 @@
-import Page from './Page';
-import react from 'react';
+import React, {Component} from 'react';
 
-class HTML extends Component{
-    render(){
-        return(
-            <Page>
-                <p>Test</p>
-            </Page> 
-        );
-    }
+class HTML extends Component {
+  render(){
+    return (
+        <div>
+            <p>CONGRATS, You've reached HTML</p>
+        </div>
+    );
+  }
 }
 
 export default HTML;

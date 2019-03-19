@@ -3,8 +3,8 @@ export const ROUTES = {
   Study: '/Study',
   Results: '/Results',
   Profile: '/Profile',
-  JavaScript: './Languages/JavaScript',
-  Java: './Languages/Java',
-  CSharp: './Languages/CSharp',
-  HTML: './Languages/HTML',
+  JavaScript: '/Languages/JavaScript',
+  Java: '/Languages/Java',
+  CSharp: '/Languages/CSharp',
+  HTML: 'Study/Languages/HTML',
 };

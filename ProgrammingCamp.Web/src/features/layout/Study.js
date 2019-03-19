@@ -3,6 +3,11 @@ import Page from './Page';
 import {NavLink} from 'react-router-dom';
 import {ROUTES} from '../../constants';
 import './Study.css'
+import {Route, Switch} from 'react-router-dom';
+import HTML from './Languages/HTML'
+import Java from './Languages/Java'
+import JavaScript from './Languages/JavaScript'
+import CSharp from './Languages/CSharp'
 
 class Study extends Component { 
   render() {
@@ -51,10 +56,16 @@ class Study extends Component {
           </nav>
           </div>
           <div className='center-card'>
-          This is a test card...
+            <Switch>
+              <Route component={() => <HTML />} exact path={ROUTES.HTML} />
+              {/* <Route component={() => <Java />} exact path={ROUTES.Java} />
+              <Route component={() => <JavaScript />} exact path={ROUTES.JavaScrips} />
+              <Route component={() => <CSharp />} exact path={ROUTES.CSharp} /> */}
+            </Switch>
+            This is a test card...
           </div>
           <div className='right-box'>
-            Hello
+            Insert something interesting here..
           </div>
         </div>
       </Page>
