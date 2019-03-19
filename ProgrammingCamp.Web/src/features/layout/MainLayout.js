@@ -6,6 +6,7 @@ import Page from './Page';
 import {ROUTES} from '../../constants';
 import Study from './Study';
 import Profile from './Profile';
+import Results from './Results'
 
 class MainLayout extends Component {
   render() {
@@ -27,6 +28,7 @@ class MainLayout extends Component {
               exact
               path={ROUTES.Profile} 
             />
+            <Route component={() => <Results />} path={ROUTES.Results} />
           </Switch>
         </div>
       </Fragment>
