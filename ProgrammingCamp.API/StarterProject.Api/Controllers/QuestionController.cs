@@ -3,7 +3,8 @@ using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
 using StarterProject.Api.Features.Questions;
-
+using StarterProject.Api.Data;
+using System.Linq;
 
 namespace StarterProject.Api.Controllers
 {
@@ -11,8 +12,8 @@ namespace StarterProject.Api.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
+        api/controller-relationships
         private readonly IQuestionRepository _context;
-
 
         public QuestionController(IQuestionRepository context)
         {
@@ -23,7 +24,6 @@ namespace StarterProject.Api.Controllers
         [ProducesResponseType(typeof(List<QuestionGetDto>), (int) HttpStatusCode.OK)]
         public IActionResult GetAll([FromQuery] int languageId)
         {
-            
             var quest = _context.GetAllQuestions(languageId);
             return Ok(quest);
         }
