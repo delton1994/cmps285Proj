@@ -3,8 +3,6 @@ using StarterProject.Api.Common;
 using StarterProject.Api.Features.Users;
 using StarterProject.Api.Security;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
 using StarterProject.Api.Data.Entites;
 
 namespace StarterProject.Api.Data

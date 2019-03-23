@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using StarterProject.Api.Features.Questions;
 using StarterProject.Api.Data;
 using System.Linq;
@@ -14,37 +12,20 @@ namespace StarterProject.Api.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        private readonly DataContext context;
-        private readonly IQuestionRepository _questionRepository;
-        private readonly ILogger<QuestionController> _logger;
+        api/controller-relationships
+        private readonly IQuestionRepository _context;
 
-        public QuestionController(IQuestionRepository questionRepository, ILogger<QuestionController> logger, DataContext Context)
+        public QuestionController(IQuestionRepository context)
         {
-            context = Context; 
-            _questionRepository = questionRepository;
-            _logger = logger;
+            _context = context;
         }
 
-        [HttpGet("GetAllQuestion/{id}")]
-        [ProducesResponseType(typeof(List<LanguageGetDto>), (int) HttpStatusCode.OK)]
-        public ActionResult Get(int id)
+        [HttpGet()]
+        [ProducesResponseType(typeof(List<QuestionGetDto>), (int) HttpStatusCode.OK)]
+        public IActionResult GetAll([FromQuery] int languageId)
         {
-            var questionsinDb = context.Questions.Where(x => x.LanguageId == id).ToList();
-            foreach (var question in questionsinDb)
-            {
-                var choicesinDb = context.Set<Choice>().Where(x => x.QuestionId == question.Id).ToList();
-                question.Choices.AddRange(choicesinDb);
-            }
-            return Ok(questionsinDb);
-            try
-            {
-                return Ok(_questionRepository.GetAllQuestions());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to find Question: {ex}");
-                return BadRequest("Failed to get Question. Please try again.");
-            }
+            var quest = _context.GetAllQuestions(languageId);
+            return Ok(quest);
         }
     }
 }

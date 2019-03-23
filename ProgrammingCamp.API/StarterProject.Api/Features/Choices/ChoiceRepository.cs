@@ -19,15 +19,14 @@ namespace StarterProject.Api.Features.Choices
             _choice = context;
         }
 
-
         public List<ChoiceGetDto> GetAllChoices()
         {
             return _choice
                 .Set<Choice>()
                 .Select(x => new ChoiceGetDto()
                 {
-                    Name = x.Name,
-                    QuestionId = x.QuestionId
+                    QuestionId = x.QuestionId,
+                    Name = x.Name
                 })
                 .ToList();
         }
