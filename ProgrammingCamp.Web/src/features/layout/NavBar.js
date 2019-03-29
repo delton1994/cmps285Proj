@@ -25,6 +25,15 @@ class NavBar extends React.Component {
         >
           Study
         </NavLink>
+
+        <NavLink
+          className='navigation-link'
+          exact
+          activeClassName='selected'
+          to={ROUTES.Results}
+        >
+          Results
+        </NavLink>
         
 
         <div className="settings-container">
