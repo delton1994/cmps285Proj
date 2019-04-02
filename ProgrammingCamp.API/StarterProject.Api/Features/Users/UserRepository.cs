@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
+using StarterProject.Api.Data.Entites;
 using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Security;
 
@@ -9,6 +11,7 @@ namespace StarterProject.Api.Features.Users
 {
     public interface IUserRepository
     {
+        List<UserResultDto> GetResult(int userid);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
         UserGetDto CreateUser(UserCreateDto userCreateDto);
@@ -146,6 +149,26 @@ namespace StarterProject.Api.Features.Users
             var user = _context.Set<User>().Find(userId);
             _context.Set<User>().Remove(user);
             _context.SaveChanges();
+        }
+
+        public List<UserResultDto> GetResult(int userid)
+        {
+            var resultQuery = _context.Set<UserResult>().AsQueryable();
+            if (userid > 0)
+            {
+                resultQuery = resultQuery.Where(x => userid == x.UserId);
+            }
+
+            var result = resultQuery.Select(x => new UserResultDto
+            {
+                    UserId = x.UserId,
+                    Result = x.Result,
+                    AnswerCorrect = x.AnswerCorrect,
+                    AnswersIncorrect = x.AnswersIncorrect,
+            })
+             .ToList();
+
+            return result;
         }
     }
 }
