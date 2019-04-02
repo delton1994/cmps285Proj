@@ -19,10 +19,11 @@ namespace StarterProject.Api.Controllers
         private readonly DataContext dataContext;
         private readonly IUserRepository _userRepository;
 
-        public UserResultController(DataContext _dataContext)
+        public UserResultController(DataContext _dataContext, IUserRepository userRepository)
         {
             _dataContext = dataContext;
-            
+            _userRepository = userRepository;
+
 
         }
 
