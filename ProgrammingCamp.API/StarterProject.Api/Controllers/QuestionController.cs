@@ -12,7 +12,7 @@ namespace StarterProject.Api.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        api/controller-relationships
+      
         private readonly IQuestionRepository _context;
 
         public QuestionController(IQuestionRepository context)

@@ -2,6 +2,7 @@
 using System.Linq;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
+using StarterProject.Api.Data.Entites;
 using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Security;
 
@@ -9,6 +10,10 @@ namespace StarterProject.Api.Features.Users
 {
     public interface IUserRepository
     {
+        UserResultDto CreateResult(UserCreateResultDto userCreateResultDto);
+        List<UserResultDto> GetAllResult(int userid);
+        UserResultDto GetResult(int userid);
+        void DeleteResult(int userid);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
         UserGetDto CreateUser(UserCreateDto userCreateDto);
@@ -24,6 +29,68 @@ namespace StarterProject.Api.Features.Users
         public UserRepository(DataContext context)
         {
             _context = context;
+        }
+
+        public List<UserResultDto> GetAllResult(int userid)
+        {
+            return _context
+                .Set<UserResult>()
+                .Select(x => new UserResultDto
+                {
+                    UserId = userid,
+                    Result = x.Result,
+                    CorrectAnswer = x.CorrectAnswer,
+                    IncorrectAnswer = x.IncorrectAnswer
+                })
+                .ToList();
+        }
+
+        public UserResultDto GetResult(int userid)
+        {
+            return _context
+                .Set<UserResult>()
+                .Select(x => new UserResultDto
+                {
+                    UserId = userid,
+                    Result = x.Result,
+                    CorrectAnswer = x.CorrectAnswer,
+                    IncorrectAnswer = x.IncorrectAnswer
+                })
+                .FirstOrDefault(x=>x.UserId == userid);
+        }
+
+
+        public UserResultDto CreateResult(UserCreateResultDto userCreateResultDto)
+        {
+            var result = new UserResult
+            {
+               Result = userCreateResultDto.Result,
+               CorrectAnswer =  userCreateResultDto.CorrectAnswer,
+               IncorrectAnswer = userCreateResultDto.IncorrectAnswer
+            };
+
+            _context.Set<UserResult>().Add(result);
+            _context.SaveChanges();
+
+            var userResultDto = new UserResultDto
+            {
+                UserId = result.UserId,
+                Result = result.Result,
+                CorrectAnswer = result.CorrectAnswer,
+                IncorrectAnswer = result.IncorrectAnswer
+            };
+
+            return userResultDto;
+        }
+
+        public void DeleteResult(int userid)
+        {
+            var findResult = _context.Set<UserResult>().Where(x => userid == x.UserId);
+            foreach (var correctAnswer in findResult) _context.Set<UserResult>().Remove(correctAnswer);
+            foreach (var incorrectAnswer in findResult) _context.Set<UserResult>().Remove(incorrectAnswer);
+            foreach (var result in findResult) _context.Set<UserResult>().Remove(result);
+
+            _context.SaveChanges();
         }
 
         public UserGetDto GetUser(int userId)
@@ -42,6 +109,7 @@ namespace StarterProject.Api.Features.Users
                 .FirstOrDefault(x => x.Id == userId);
         }
 
+
         public List<UserGetDto> GetAllUsers()
         {
             return _context
@@ -57,6 +125,8 @@ namespace StarterProject.Api.Features.Users
                 })
                 .ToList();
         }
+
+        
 
         public UserGetDto CreateUser(UserCreateDto userCreateDto)
         {

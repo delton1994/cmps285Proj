@@ -151,5 +151,7 @@ namespace StarterProject.Api.Data
 
 
         }
+
+        public DbSet<StarterProject.Api.Data.Entites.UserResult> UserResult { get; set; }
     }
 }
