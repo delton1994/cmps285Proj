@@ -366,8 +366,6 @@ namespace StarterProject.Api.Migrations
                         });
                 });
 
-<<<<<<< Updated upstream
-=======
             modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
                 {
                     b.Property<int>("Id")
@@ -389,7 +387,7 @@ namespace StarterProject.Api.Migrations
                     b.ToTable("UserResults");
                 });
 
->>>>>>> Stashed changes
+
             modelBuilder.Entity("StarterProject.Api.Features.Users.User", b =>
                 {
                     b.Property<int>("Id")
@@ -427,7 +425,7 @@ namespace StarterProject.Api.Migrations
 =======
                             PasswordHash = new byte[] { 199, 237, 223, 213, 226, 166, 84, 181, 69, 203, 187, 207, 54, 107, 231, 202, 158, 250, 76, 177 },
                             PasswordSalt = new byte[] { 223, 10, 146, 81, 22, 148, 125, 21, 39, 150, 65, 210, 139, 239, 243, 111 },
->>>>>>> Stashed changes
+ Stashed changes
                             Role = "Admin",
                             Username = "admin"
                         },
