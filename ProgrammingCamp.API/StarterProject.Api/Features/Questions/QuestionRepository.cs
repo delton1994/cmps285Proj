@@ -25,7 +25,7 @@ namespace StarterProject.Api.Features.Questions
         {
             return _context
                 .Set<Question>()
-                 .Select(x => new QuestionGetDto()
+                .Select(x => new QuestionGetDto()
                 {
                     Name = x.Name,
                     LanguageId = x.LanguageId,
@@ -37,9 +37,11 @@ namespace StarterProject.Api.Features.Questions
 
                         })
                         .ToList()
-                  })
-                  .ToList();
-                  
+                })
+                .ToList();
+
+        }
+
         public List<QuestionGetDto> GetAllQuestions(int languageId)
         {
             var questionQuery = _context.Set<Question>().AsQueryable();
@@ -50,7 +52,7 @@ namespace StarterProject.Api.Features.Questions
             }
 
             var result = questionQuery
-               .Select(x => new QuestionGetDto()
+                .Select(x => new QuestionGetDto()
                 {
                     LanguageId = x.LanguageId,
                     Name = x.Name,
@@ -61,6 +63,9 @@ namespace StarterProject.Api.Features.Questions
                             IsAnswer = r.IsAnswer
                     })
                     .ToList()
+                })
+                .ToList();
+
             return result;
         }
     }
