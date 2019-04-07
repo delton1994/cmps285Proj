@@ -40,22 +40,6 @@ namespace StarterProject.Api.Controllers
                 return BadRequest("Failed to get Question. Please try again.");
             }
         }
-        [HttpGet("controller/{languageId:int}")]
-        [ProducesResponseType(typeof(List<QuestionGetDto>), (int)HttpStatusCode.OK)]
-        public IActionResult GetById([FromRoute] int languageId)
-        {
-
-            try
-            {
-                return Ok(_questionRepository.GetById(languageId));
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to find Question: {ex}");
-                return BadRequest("Failed to get Question. Please try again.");
-
-            }
-        }
 
     }
 
