@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
+using StarterProject.Api.Data.Entites;
 using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Security;
 
