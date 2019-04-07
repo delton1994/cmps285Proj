@@ -15,16 +15,4 @@ namespace StarterProject.Api.Data.Entites
         public int AnswerCorrect { get; set; }
         public int AnswersIncorrect { get; set; }
     }
-
-    
-
-    public class UserResultDto
-    {
-        public int UserId { get; set; }
-        public int LanguageId { get; set; }
-        public int Result { get; set; }
-        public int AnswerCorrect { get; set; }
-        public int AnswersIncorrect { get; set; }
-
-    }
 }
