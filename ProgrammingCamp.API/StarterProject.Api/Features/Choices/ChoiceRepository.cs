@@ -12,22 +12,21 @@ namespace StarterProject.Api.Features.Choices
 
     public class ChoiceRepository : IChoiceRepository
     {
-        private readonly DataContext _choice;
+        private readonly DataContext _context;
 
         public ChoiceRepository(DataContext context)
         {
-            _choice = context;
+            _context = context;
         }
-
 
         public List<ChoiceGetDto> GetAllChoices()
         {
-            return _choice
+            return _context
                 .Set<Choice>()
                 .Select(x => new ChoiceGetDto()
                 {
-                    Name = x.Name,
-                    QuestionId = x.QuestionId
+                    QuestionId = x.QuestionId,
+                    Name = x.Name
                 })
                 .ToList();
         }
