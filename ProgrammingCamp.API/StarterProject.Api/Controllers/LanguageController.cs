@@ -13,7 +13,9 @@ namespace StarterProject.Api.Controllers
     [ApiController]
     public class LanguageController : ControllerBase
     {
+
         private readonly ILanguageRepository _context;
+
         private readonly ILogger<LanguageController> _logger;
 
         public LanguageController(ILanguageRepository context, ILogger<LanguageController> logger)

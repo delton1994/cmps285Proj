@@ -12,12 +12,26 @@ namespace StarterProject.Api.Controllers
     [ApiController]
     public class QuestionController : ControllerBase
     {
-        api/controller-relationships
         private readonly IQuestionRepository _context;
-
+        
         public QuestionController(IQuestionRepository context)
         {
-            _context = context;
+        _context = context;
+        }
+        
+        [HttpGet("[Controller]")]
+        [ProducesResponseType(typeof(List<QuestionGetDto>), (int)HttpStatusCode.OK)]
+        public ActionResult Get()
+        {
+            try
+            {
+                return Ok(_context.GetAllQuestions());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to find Question: {ex}");
+                return BadRequest("Failed to get Question. Please try again.");
+            } 
         }
 
         [HttpGet()]
@@ -27,5 +41,9 @@ namespace StarterProject.Api.Controllers
             var quest = _context.GetAllQuestions(languageId);
             return Ok(quest);
         }
+
     }
+
+
+            
 }
