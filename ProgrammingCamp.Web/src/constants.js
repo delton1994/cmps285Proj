@@ -6,5 +6,5 @@ export const ROUTES = {
   JavaScript: '/Languages/JavaScript',
   Java: '/Languages/Java',
   CSharp: '/Languages/CSharp',
-  HTML: 'Study/Languages/HTML',
+  HTML: '/Languages/HTML',
 };
