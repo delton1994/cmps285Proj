@@ -368,7 +368,7 @@ namespace StarterProject.Api.Migrations
 
             modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
                 {
-                    b.Property<int>("ResultId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -376,13 +376,11 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("IncorrectAnswer");
 
+                    b.Property<int>("LanguageId");
+
                     b.Property<int>("Result");
 
-                    b.Property<int>("UserId");
-
-                    b.HasKey("ResultId");
-
-                    b.HasIndex("UserId");
+                    b.HasKey("UserId");
 
                     b.ToTable("UserResult");
                 });
@@ -418,8 +416,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 102, 141, 234, 12, 180, 61, 19, 227, 149, 178, 44, 128, 92, 213, 70, 30, 200, 206, 69, 121 },
-                            PasswordSalt = new byte[] { 21, 224, 38, 136, 239, 168, 87, 150, 0, 7, 228, 81, 34, 95, 70, 205 },
+                            PasswordHash = new byte[] { 38, 178, 176, 213, 42, 79, 183, 34, 251, 236, 127, 57, 24, 0, 213, 134, 234, 249, 68, 134 },
+                            PasswordSalt = new byte[] { 2, 202, 111, 169, 192, 27, 204, 149, 239, 144, 226, 127, 38, 252, 21, 205 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -429,8 +427,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 232, 191, 81, 158, 123, 1, 158, 243, 44, 58, 43, 241, 137, 219, 30, 215, 201, 137, 36, 58 },
-                            PasswordSalt = new byte[] { 227, 56, 100, 160, 114, 213, 130, 75, 93, 40, 199, 43, 246, 144, 66, 193 },
+                            PasswordHash = new byte[] { 81, 239, 73, 133, 106, 130, 130, 19, 251, 123, 12, 223, 109, 199, 103, 123, 250, 189, 114, 130 },
+                            PasswordSalt = new byte[] { 112, 6, 227, 50, 84, 254, 235, 229, 13, 51, 74, 42, 114, 191, 8, 222 },
                             Role = "Admin",
                             Username = "Delton94"
                         });
@@ -449,14 +447,6 @@ namespace StarterProject.Api.Migrations
                     b.HasOne("StarterProject.Api.Data.Entites.Language", "Language")
                         .WithMany("Questions")
                         .HasForeignKey("LanguageId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
-                {
-                    b.HasOne("StarterProject.Api.Features.Users.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

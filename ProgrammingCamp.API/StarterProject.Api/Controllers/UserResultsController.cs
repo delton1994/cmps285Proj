@@ -23,11 +23,11 @@ namespace StarterProject.Api.Controllers
             _context = context;
         }
 
-        [HttpGet("{userId:int}")]
+        [HttpGet("{userId:int}/{languageId:int}")]
         [ProducesResponseType(typeof(UserResultDto), (int) HttpStatusCode.OK)]
-        public IActionResult GetResult(int userId)
+        public IActionResult GetResult(int userId,int languageId)
         {
-            var userResult = _context.GetResult(userId);
+            var userResult = _context.GetResult(userId, languageId);
             return Ok(userResult);
         }
 

@@ -12,7 +12,7 @@ namespace StarterProject.Api.Features.Users
     {
         UserResultDto CreateResult(UserCreateResultDto userCreateResultDto);
         List<UserResultDto> GetAllResult(int userid);
-        UserResultDto GetResult(int userid);
+        UserResultDto GetResult(int userid, int languageId);
         void DeleteResult(int userid);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
@@ -38,6 +38,7 @@ namespace StarterProject.Api.Features.Users
                 .Select(x => new UserResultDto
                 {
                     UserId = userid,
+                    LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
@@ -45,18 +46,19 @@ namespace StarterProject.Api.Features.Users
                 .ToList();
         }
 
-        public UserResultDto GetResult(int userid)
+        public UserResultDto GetResult(int userid,int languageId)
         {
             return _context
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
                     UserId = userid,
+                    LanguageId = languageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .FirstOrDefault(x=>x.UserId == userid);
+                .First(x=>x.UserId == userid);
         }
 
 
@@ -64,6 +66,7 @@ namespace StarterProject.Api.Features.Users
         {
             var result = new UserResult
             {
+               LanguageId = userCreateResultDto.LanguageId,
                Result = userCreateResultDto.Result,
                CorrectAnswer =  userCreateResultDto.CorrectAnswer,
                IncorrectAnswer = userCreateResultDto.IncorrectAnswer
@@ -75,6 +78,7 @@ namespace StarterProject.Api.Features.Users
             var userResultDto = new UserResultDto
             {
                 UserId = result.UserId,
+                LanguageId = result.LanguageId,
                 Result = result.Result,
                 CorrectAnswer = result.CorrectAnswer,
                 IncorrectAnswer = result.IncorrectAnswer
@@ -89,7 +93,8 @@ namespace StarterProject.Api.Features.Users
             foreach (var correctAnswer in findResult) _context.Set<UserResult>().Remove(correctAnswer);
             foreach (var incorrectAnswer in findResult) _context.Set<UserResult>().Remove(incorrectAnswer);
             foreach (var result in findResult) _context.Set<UserResult>().Remove(result);
-
+            foreach (var languageId in findResult) _context.Set<UserResult>().Remove(languageId);
+            foreach (var userId in findResult) _context.Set<UserResult>().Remove(userId);
             _context.SaveChanges();
         }
 
