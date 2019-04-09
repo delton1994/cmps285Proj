@@ -4,23 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarterProject.Api.Data;
 
 namespace StarterProject.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190408084718_Adding_User_Result")]
-    partial class Adding_User_Result
+    [Migration("20190408234052_User_Result")]
+    partial class User_Result
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
             modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
                 {
                     b.Property<int>("UserId")
@@ -35,10 +29,12 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("Result");
 
+                    b.Property<bool>("isDeleted");
+
                     b.HasKey("UserId");
 
                     b.ToTable("UserResult");
-            });
+                });
 
 #pragma warning restore 612, 618
         }

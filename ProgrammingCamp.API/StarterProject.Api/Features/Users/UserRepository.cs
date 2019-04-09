@@ -1,5 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
 using StarterProject.Api.Data.Entites;
@@ -13,7 +17,7 @@ namespace StarterProject.Api.Features.Users
         UserResultDto CreateResult(UserCreateResultDto userCreateResultDto);
         List<UserResultDto> GetAllResult(int userid);
         UserResultDto GetResult(int userid, int languageId);
-        void DeleteResult(int userid);
+        void DeleteResult(UserResult userResult);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
         UserGetDto CreateUser(UserCreateDto userCreateDto);
@@ -37,7 +41,7 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    UserId = userid,
+                    Id = userid,
                     LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
@@ -52,13 +56,13 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    UserId = userid,
+                    Id = userid,
                     LanguageId = languageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .First(x=>x.UserId == userid);
+                .First(x=>x.Id == userid);
         }
 
 
@@ -71,31 +75,27 @@ namespace StarterProject.Api.Features.Users
                CorrectAnswer =  userCreateResultDto.CorrectAnswer,
                IncorrectAnswer = userCreateResultDto.IncorrectAnswer
             };
-
             _context.Set<UserResult>().Add(result);
             _context.SaveChanges();
 
             var userResultDto = new UserResultDto
             {
-                UserId = result.UserId,
+                Id = result.UserId,
                 LanguageId = result.LanguageId,
                 Result = result.Result,
                 CorrectAnswer = result.CorrectAnswer,
                 IncorrectAnswer = result.IncorrectAnswer
             };
-
-            return userResultDto;
+            
+            return userResultDto.IsDeleted == true ? null : userResultDto;
         }
-
-        public void DeleteResult(int userid)
+        public void DeleteResult(UserResult userResult)
         {
-            var findResult = _context.Set<UserResult>().Where(x => userid == x.UserId);
-            foreach (var correctAnswer in findResult) _context.Set<UserResult>().Remove(correctAnswer);
-            foreach (var incorrectAnswer in findResult) _context.Set<UserResult>().Remove(incorrectAnswer);
-            foreach (var result in findResult) _context.Set<UserResult>().Remove(result);
-            foreach (var languageId in findResult) _context.Set<UserResult>().Remove(languageId);
-            foreach (var userId in findResult) _context.Set<UserResult>().Remove(userId);
+            userResult.IsDeleted = true;
+            _context.Update(userResult);
             _context.SaveChanges();
+
+        
         }
 
         public UserGetDto GetUser(int userId)

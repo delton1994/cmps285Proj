@@ -39,7 +39,7 @@ namespace StarterProject.Api.Controllers
             return Ok(userResult);
         }
 
-        [HttpPost("{userId:int}")]
+        [HttpPost()]
         [ProducesResponseType(typeof(UserResultDto), (int) HttpStatusCode.Created)]
         public IActionResult Post([FromBody] UserCreateResultDto userCreateResultDto)
         {
@@ -47,11 +47,11 @@ namespace StarterProject.Api.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{userId:int}")]
+        [HttpDelete()]
         [ProducesResponseType((int) HttpStatusCode.OK)]
-        public IActionResult DeleteResult( int userId)
+        public IActionResult DeleteResult(UserResult userResult)
         {
-            _context.DeleteResult(userId);
+            _context.DeleteResult(userResult);
             return Ok();
         }
 

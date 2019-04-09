@@ -380,6 +380,8 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("Result");
 
+                    b.Property<bool>("isDeleted");
+
                     b.HasKey("UserId");
 
                     b.ToTable("UserResult");
@@ -416,8 +418,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 38, 178, 176, 213, 42, 79, 183, 34, 251, 236, 127, 57, 24, 0, 213, 134, 234, 249, 68, 134 },
-                            PasswordSalt = new byte[] { 2, 202, 111, 169, 192, 27, 204, 149, 239, 144, 226, 127, 38, 252, 21, 205 },
+                            PasswordHash = new byte[] { 149, 136, 209, 48, 105, 155, 167, 23, 171, 36, 93, 65, 236, 127, 71, 19, 7, 177, 165, 120 },
+                            PasswordSalt = new byte[] { 57, 1, 119, 134, 29, 132, 116, 90, 240, 142, 228, 242, 41, 120, 53, 68 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -427,8 +429,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 81, 239, 73, 133, 106, 130, 130, 19, 251, 123, 12, 223, 109, 199, 103, 123, 250, 189, 114, 130 },
-                            PasswordSalt = new byte[] { 112, 6, 227, 50, 84, 254, 235, 229, 13, 51, 74, 42, 114, 191, 8, 222 },
+                            PasswordHash = new byte[] { 105, 177, 79, 57, 131, 95, 231, 212, 253, 12, 66, 79, 126, 37, 26, 74, 17, 50, 217, 65 },
+                            PasswordSalt = new byte[] { 252, 37, 15, 62, 155, 142, 205, 131, 194, 195, 198, 71, 30, 54, 189, 65 },
                             Role = "Admin",
                             Username = "Delton94"
                         });
