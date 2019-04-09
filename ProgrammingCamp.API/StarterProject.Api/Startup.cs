@@ -44,7 +44,7 @@ namespace StarterProject.Api
                 })
                 .AddJsonOptions(
             options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-        );
+    );
 
             SetupDatabase(services);
             SetupAuthentication(services);

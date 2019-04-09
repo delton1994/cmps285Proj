@@ -29,8 +29,6 @@ namespace StarterProject.Api.Features.Languages
             })
             .ToList();
         }
-    }
-
-     
+    }   
 }
 
