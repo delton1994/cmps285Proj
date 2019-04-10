@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
@@ -23,15 +24,8 @@ namespace StarterProject.Api.Controllers
         [ProducesResponseType(typeof(List<QuestionGetDto>), (int)HttpStatusCode.OK)]
         public ActionResult Get()
         {
-            try
-            {
-                return Ok(_context.GetAllQuestions());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to find Question: {ex}");
-                return BadRequest("Failed to get Question. Please try again.");
-            } 
+            var quest = _context.GetAllQuestions();
+            return Ok(quest);
         }
 
         [HttpGet()]
