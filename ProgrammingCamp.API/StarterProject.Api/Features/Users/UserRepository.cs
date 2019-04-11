@@ -52,17 +52,20 @@ namespace StarterProject.Api.Features.Users
 
         public UserResultDto GetResult(int userid,int languageId)
         {
+
+
             return _context
                 .Set<UserResult>()
+                .Where(x=>!x.IsDeleted)
                 .Select(x => new UserResultDto
                 {
-                    Id = userid,
-                    LanguageId = languageId,
+                    Id = x.UserId,
+                    LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .First(x=>x.Id == userid);
+                .FirstOrDefault(x=>x.Id== userid && x.LanguageId == languageId);
         }
 
 
