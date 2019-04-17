@@ -10,7 +10,7 @@ class Study extends Component {
     const response = await apiHelper.get('api/Question?languageId=' + 2)
     if(response){
       this.state = {response: null} 
-      myJSON = JSON.stringify(response)
+      JSON.stringify(response)
       console.log(response)
     }
   }

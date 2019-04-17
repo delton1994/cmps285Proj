@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import apiHelper from '../../helpers/api';
 import './Login.css';
 import Input from '../layout/Input';
 
@@ -29,6 +29,26 @@ handleSignUp = () => {
     var form = document.getElementById('form')
     modal.style.display = 'block'
     form.style.visibility = 'hidden'
+
+}
+
+handleSignUpSubmit = e => {
+  e.preventDefault();
+  var newUser = 
+  this.setState({
+    password: this.props.password,
+    username: this.props.username,
+    firstName: this.props.firstName,
+    lastName: this.props.lastName,
+    email: this.props.email,
+  })
+
+  const response= apiHelper.post('/Users',{newUser})
+  if(response){
+    console.log(response)
+  };
+  
+  
 
 }
 handleClose = () => {
@@ -136,6 +156,8 @@ handleClose = () => {
                 />
                 <button
                 className='submit-button'
+                onClick = {this.handleSignUpSubmit && this.handleClose}
+                
                 >
                 Submit
                 </button>
