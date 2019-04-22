@@ -19,7 +19,7 @@ namespace StarterProject.Api.Migrations
                     Result = table.Column<int>(nullable: false),
                     CorrectAnswer = table.Column<int>(nullable: false),
                     IncorrectAnswer = table.Column<int>(nullable: false),
-                    isDeleted = table.Column<bool>(nullable: false)
+                    IsDeleted = table.Column<bool>(nullable: false)
                 },
                 constraints: table => { table.PrimaryKey("PK_UserResult", x => x.UserId); });
         }

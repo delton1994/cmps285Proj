@@ -376,11 +376,11 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("IncorrectAnswer");
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<int>("LanguageId");
 
                     b.Property<int>("Result");
-
-                    b.Property<bool>("isDeleted");
 
                     b.HasKey("UserId");
 
@@ -418,8 +418,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 149, 136, 209, 48, 105, 155, 167, 23, 171, 36, 93, 65, 236, 127, 71, 19, 7, 177, 165, 120 },
-                            PasswordSalt = new byte[] { 57, 1, 119, 134, 29, 132, 116, 90, 240, 142, 228, 242, 41, 120, 53, 68 },
+                            PasswordHash = new byte[] { 228, 44, 225, 54, 219, 18, 138, 147, 154, 3, 162, 144, 67, 251, 33, 148, 69, 216, 131, 207 },
+                            PasswordSalt = new byte[] { 5, 243, 1, 59, 77, 70, 74, 11, 251, 199, 10, 200, 120, 18, 10, 228 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -429,8 +429,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 105, 177, 79, 57, 131, 95, 231, 212, 253, 12, 66, 79, 126, 37, 26, 74, 17, 50, 217, 65 },
-                            PasswordSalt = new byte[] { 252, 37, 15, 62, 155, 142, 205, 131, 194, 195, 198, 71, 30, 54, 189, 65 },
+                            PasswordHash = new byte[] { 97, 73, 105, 25, 15, 170, 39, 127, 43, 70, 159, 48, 214, 17, 191, 174, 93, 70, 26, 188 },
+                            PasswordSalt = new byte[] { 155, 147, 114, 207, 40, 109, 4, 72, 219, 199, 93, 167, 253, 105, 26, 121 },
                             Role = "Admin",
                             Username = "Delton94"
                         });

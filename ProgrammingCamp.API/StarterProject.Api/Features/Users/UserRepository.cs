@@ -9,6 +9,7 @@ using StarterProject.Api.Data;
 using StarterProject.Api.Data.Entites;
 using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Security;
+using UserResultDto = StarterProject.Api.Data.Entites.UserResultDto;
 
 namespace StarterProject.Api.Features.Users
 {
@@ -41,12 +42,13 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    Id = userid,
+                    Id =x.UserId,
                     LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
+                .Where(x=>x.Id == userid)
                 .ToList();
         }
 
@@ -90,15 +92,13 @@ namespace StarterProject.Api.Features.Users
                 IncorrectAnswer = result.IncorrectAnswer
             };
             
-            return userResultDto.IsDeleted == true ? null : userResultDto;
+            return userResultDto;
         }
         public void DeleteResult(UserResult userResult)
         {
-            userResult.IsDeleted = true;
-            _context.Update(userResult);
-            _context.SaveChanges();
-
-        
+           userResult.IsDeleted = true;
+           _context.Update(userResult);
+           _context.SaveChanges();
         }
 
         public UserGetDto GetUser(int userId)
