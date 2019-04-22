@@ -52,17 +52,23 @@
     text-align: center;
     display: block;
     border-bottom: 4px solid transparent;
-    color: hsl(0, 0%, 45%);
+    background-color: hsl(0, 0%, 98%);
     height: 50px;
     width: 130px;
     line-height: 50px;
     text-decoration: none;
     white-space: nowrap;
+    outline: transparent;
+    border: transparent;
 }
 
 .language-link:hover {
     background-color: hsl(0, 0%, 95%);
     color: hsl(0, 0%, 30%);
+}
+
+.language-link:focus{
+    border-bottom: 4px solid hsl(165, 68%, 61%);
 }
 
 .navList{
