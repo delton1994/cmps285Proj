@@ -138,58 +138,10 @@ namespace StarterProject.Api.Data
                     new Choice {Name = "int variable", Id = 30, QuestionId = 8, IsAnswer = false},
                     new Choice {Name = "var", Id = 31, QuestionId = 8, IsAnswer = true},
                     new Choice {Name = "int var", Id = 32, QuestionId = 8, IsAnswer = false}
-
-
-
-
                 }
-
-            );
-
-
-            modelBuilder.Entity<UserResult>().Property<bool>("isDeleted");
-            modelBuilder.Entity<UserResult>().HasQueryFilter(m => EF.Property<bool>(m, "isDeleted") == false);
+            );  
         }
-
-        public override int SaveChanges()
-        {
-            UpdateSoftDeleteStatuses();
-            return base.SaveChanges();
-        }
-
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            UpdateSoftDeleteStatuses();
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-        }
-
-        private void UpdateSoftDeleteStatuses()
-        {
-            foreach (var entry in ChangeTracker.Entries())
-            {
-                switch (entry.State)
-                {
-                    case EntityState.Added:
-                        entry.CurrentValues["isDeleted"] = false;
-                        break;
-                    case EntityState.Deleted:
-                        entry.State = EntityState.Modified;
-                        entry.CurrentValues["isDeleted"] = true;
-                        break;
-                    case EntityState.Detached:
-                        break;
-                    case EntityState.Unchanged:
-                        break;
-                    case EntityState.Modified:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        public DbSet<StarterProject.Api.Data.Entites.UserResult> UserResult { get; set; }
+        public DbSet<UserResult> UserResult { get; set; }
             
 
         

@@ -9,6 +9,11 @@ namespace StarterProject.Api.Data.Entites
 
     public class UserResult
     {
+        public UserResult()
+        {
+            IsDeleted = false;
+        }
+
         [Key]
         public int UserId { get; set; }
         public int LanguageId { get; set; }
@@ -20,7 +25,10 @@ namespace StarterProject.Api.Data.Entites
 
     public class UserResultDto
     {
-      
+        public UserResultDto()
+        {
+            IsDeleted = false;
+        }
         public int Id { get; set; }
         public int LanguageId { get; set; }
         public int Result { get; set; }
