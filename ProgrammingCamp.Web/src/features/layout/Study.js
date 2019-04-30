@@ -1,74 +1,67 @@
 import React, {Component} from 'react';
 import Page from './Page';
-import {NavLink} from 'react-router-dom';
-import {ROUTES} from '../../constants';
 import './Study.css'
-import {Route, Switch} from 'react-router-dom';
-import HTML from './Languages/HTML'
-import Java from './Languages/Java'
-import JavaScript from './Languages/JavaScript'
-import CSharp from './Languages/CSharp'
+import apiHelper from '../../helpers/api';
 
-class Study extends Component { 
+var myJSON
+
+class Study extends Component {  
+  handleGetQuestions = async() => {
+    const response = await apiHelper.get('api/Question?languageId=' + 2)
+    if(response){
+      this.state = {response: null} 
+      JSON.stringify(response)
+      console.log(response)
+    }
+  }
+
+
   render() {
+  const element = document.getElementsByClassName('center-card')
     return (
       <Page header="Almost Studying..">
         <div className='main-div'>
           <div className='left-box'>
            <nav className='left-nav'>
             <ul className='navList'>
-            <NavLink
+            <button
               className='language-link'
-              exact
-              activeClassName='selected'
-              to={ROUTES.HTML}
+              onClick={this.handleGetQuestions}
+              
             >
               HTML
-            </NavLink>
+            </button>
 
-            <NavLink
+            <button
               className='language-link'
-              exact
-              activeClassName='selected'
-              to={ROUTES.Java}
             >
               Java
-            </NavLink>
+            </button>
 
-            <NavLink
+            <button
               className='language-link'
-              exact
-              activeClassName='selected'
-              to={ROUTES.JavaScript}
+
             >
               JavaScript
-            </NavLink>
+            </button>
 
-            <NavLink
+            <button
               className='language-link'
-              exact
-              activeClassName='selected'
-              to={ROUTES.CSharp}
             >
               C#
-            </NavLink>
+            </button>
             </ul>
           </nav>
           </div>
           <div className='center-card'>
-            <Switch>
-              <Route component={() => <HTML />} exact path={ROUTES.HTML} />
-              {/* <Route component={() => <Java />} exact path={ROUTES.Java} />
-              <Route component={() => <JavaScript />} exact path={ROUTES.JavaScrips} />
-              <Route component={() => <CSharp />} exact path={ROUTES.CSharp} /> */}
-            </Switch>
-            This is a test card...
+            Info goes here.
           </div>
           <div className='right-box'>
-            Insert something interesting here..
+           
           </div>
         </div>
       </Page>
+      
     );
   }
 }

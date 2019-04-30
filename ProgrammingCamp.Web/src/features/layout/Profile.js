@@ -6,7 +6,8 @@ class Profile extends Component {
   handleGetUsers = async() => {
     const response = await apiHelper.get('Users')
     if(response){
-      console.log(response)
+      var user = JSON.stringify(response,['id','username'])
+      console.log(user)
     }
   }
   render() {
