@@ -9,7 +9,7 @@ class Study extends Component {
   var = 2
   counter = 0
   questionVar = 0
-  
+
   constructor(){
     super();
       this.state = {
@@ -19,6 +19,7 @@ class Study extends Component {
   }
    componentWillMount(){
      this.getQuestions();
+     this.getChoices();
    }
 
  getQuestions(url, params){
