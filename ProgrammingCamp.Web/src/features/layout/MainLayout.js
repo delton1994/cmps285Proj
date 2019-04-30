@@ -7,6 +7,7 @@ import {ROUTES} from '../../constants';
 import Study from './Study';
 import Profile from './Profile';
 import Results from './Results'
+import Home from './Home'
 
 class MainLayout extends Component {
   render() {
@@ -19,10 +20,8 @@ class MainLayout extends Component {
         <div className="main-content-container">
           <Switch>
             <Route
-              component={() => <Page header="Home" />}
-              exact
-              path={ROUTES.dashboard}
-            />
+              component={() => <Home />} path={ROUTES.Home} />
+             
             <Route component={() => <Study />} path={ROUTES.Study} />
             <Route component={() => <Profile header='Profile' />}
               exact
