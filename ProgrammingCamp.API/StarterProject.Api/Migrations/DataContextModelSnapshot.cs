@@ -376,6 +376,8 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("IncorrectAnswer");
 
+                    b.Property<bool>("IsDeleted");
+
                     b.Property<int>("LanguageId");
 
                     b.Property<int>("Result");
@@ -418,8 +420,10 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
+
                             PasswordHash = new byte[] { 155, 72, 245, 72, 64, 109, 133, 79, 176, 154, 172, 168, 181, 30, 21, 75, 217, 70, 134, 112 },
                             PasswordSalt = new byte[] { 124, 237, 105, 103, 235, 63, 40, 219, 231, 235, 228, 18, 230, 196, 190, 93 },
+
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -429,8 +433,10 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
+
                             PasswordHash = new byte[] { 162, 206, 178, 98, 220, 151, 127, 144, 197, 121, 192, 252, 104, 20, 73, 228, 217, 172, 99, 227 },
                             PasswordSalt = new byte[] { 127, 117, 10, 120, 116, 128, 82, 182, 212, 46, 175, 90, 43, 41, 217, 163 },
+
                             Role = "Admin",
                             Username = "Delton94"
                         });

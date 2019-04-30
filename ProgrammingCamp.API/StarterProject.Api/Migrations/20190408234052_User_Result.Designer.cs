@@ -29,7 +29,7 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("Result");
 
-                    b.Property<bool>("isDeleted");
+                    b.Property<bool>("IsDeleted");
 
                     b.HasKey("UserId");
 

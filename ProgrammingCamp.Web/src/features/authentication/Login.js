@@ -9,7 +9,7 @@ class Login extends Component {
     username: '', // TODO: Set default to empty string once hooked to API
     firstName: '',
     lastName: '',
-    email: '',
+    email: ''
   };
 
   handleInputChanged = (value, valueName) => {
@@ -21,7 +21,7 @@ class Login extends Component {
 
     this.props.handleLogin({
       password: this.state.password,
-      username: this.state.username,
+      username: this.state.username
     });
   };
 handleSignUp = () => {
@@ -34,17 +34,25 @@ handleSignUp = () => {
 
 handleSignUpSubmit = e => {
   e.preventDefault();
-  var newUser = 
   this.setState({
     password: this.props.password,
     username: this.props.username,
     firstName: this.props.firstName,
     lastName: this.props.lastName,
-    email: this.props.email,
-  })
+    email: this.props.email
+  });
+ 
 
-  const response= apiHelper.post('/Users',{newUser})
-  if(response){
+  const response=  apiHelper.post('Users',{
+    
+      password: this.state.password,
+      username: this.state.username,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email
+    
+  })
+  if(response.success){
     console.log(response)
   };
   
@@ -102,9 +110,9 @@ handleClose = () => {
             </button> */}
         </div>
 
-        <div id="Modal" class="modal">
-            <div class="modal-content">
-              <span class="close" 
+        <div id="Modal" className="modal">
+            <div className="modal-content">
+              <span className="close" 
               onClick={this.handleClose}>
               &times;
               </span>
@@ -156,7 +164,7 @@ handleClose = () => {
                 />
                 <button
                 className='submit-button'
-                onClick = {this.handleSignUpSubmit && this.handleClose}
+                onClick = {this.handleClose}
                 
                 >
                 Submit
