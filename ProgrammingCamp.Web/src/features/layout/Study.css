@@ -14,8 +14,18 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
-.center-card{
+.center-card-question{
     display: inline-block;
+    background-color: hsl(0,0%,98%);
+    width: 500px;
+    height: 300px;
+    margin: 7% auto;
+    line-height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.center-card-answer{
+    display: none;
     background-color: hsl(0,0%,98%);
     width: 500px;
     height: 300px;
@@ -52,17 +62,23 @@
     text-align: center;
     display: block;
     border-bottom: 4px solid transparent;
-    color: hsl(0, 0%, 45%);
+    background-color: hsl(0, 0%, 98%);
     height: 50px;
     width: 130px;
     line-height: 50px;
     text-decoration: none;
     white-space: nowrap;
+    outline: transparent;
+    border: transparent;
 }
 
 .language-link:hover {
     background-color: hsl(0, 0%, 95%);
     color: hsl(0, 0%, 30%);
+}
+
+.language-link:focus{
+    border-bottom: 4px solid hsl(165, 68%, 61%);
 }
 
 .navList{

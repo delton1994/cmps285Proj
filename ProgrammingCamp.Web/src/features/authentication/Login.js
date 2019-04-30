@@ -82,9 +82,9 @@ handleClose = () => {
             </button> */}
         </div>
 
-        <div id="Modal" class="modal">
-            <div class="modal-content">
-              <span class="close" 
+        <div id="Modal" className="modal">
+            <div className="modal-content">
+              <span className="close" 
               onClick={this.handleClose}>
               &times;
               </span>
