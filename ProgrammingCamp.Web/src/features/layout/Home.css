@@ -1,0 +1,40 @@
+.info-title {
+    float: right;
+    line-height: 0px;
+}
+
+.info-text {
+    align-content: center; 
+    width: 200px; 
+    height: 225px; 
+    padding: 10px; 
+    float: right; 
+    text-align: left; 
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19); 
+    margin: 0 0%;
+    line-height: 25px;
+    position: relative;
+    top: 15px;
+}
+
+.client {
+    float: right;
+    line-height: 585px;
+    position: relative;
+    margin: 0 -165px;
+}
+
+.client-info {
+    align-content: center;
+    width: 200px;
+    height: 185px;
+    padding: 10px;
+    float: right;
+    text-align: left;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 10px 0 rgba(0, 0, 0, 0.19);
+    margin: 0 -16%;
+    line-height: 25px;
+    position: relative;
+    top: 305px;
+}
+
