@@ -42,13 +42,13 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    Id =x.UserId,
+                    UserId =x.UserId,
                     LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .Where(x=>x.Id == userid)
+                .Where(x=>x.UserId == userid)
                 .ToList();
         }
 
@@ -61,13 +61,13 @@ namespace StarterProject.Api.Features.Users
                 .Where(x=>!x.IsDeleted)
                 .Select(x => new UserResultDto
                 {
-                    Id = x.UserId,
+                    UserId = x.UserId,
                     LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .FirstOrDefault(x=>x.Id== userid && x.LanguageId == languageId);
+                .FirstOrDefault(x=>x.UserId== userid && x.LanguageId == languageId);
         }
 
 
@@ -75,6 +75,7 @@ namespace StarterProject.Api.Features.Users
         {
             var result = new UserResult
             {
+               UserId = userCreateResultDto.Id,
                LanguageId = userCreateResultDto.LanguageId,
                Result = userCreateResultDto.Result,
                CorrectAnswer =  userCreateResultDto.CorrectAnswer,
@@ -85,7 +86,8 @@ namespace StarterProject.Api.Features.Users
 
             var userResultDto = new UserResultDto
             {
-                Id = result.UserId,
+                Id = result.Id,
+                UserId = userCreateResultDto.Id,
                 LanguageId = result.LanguageId,
                 Result = result.Result,
                 CorrectAnswer = result.CorrectAnswer,

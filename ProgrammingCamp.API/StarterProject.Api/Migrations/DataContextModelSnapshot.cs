@@ -368,7 +368,7 @@ namespace StarterProject.Api.Migrations
 
             modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -382,7 +382,9 @@ namespace StarterProject.Api.Migrations
 
                     b.Property<int>("Result");
 
-                    b.HasKey("UserId");
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
 
                     b.ToTable("UserResult");
                 });
@@ -418,8 +420,10 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 228, 44, 225, 54, 219, 18, 138, 147, 154, 3, 162, 144, 67, 251, 33, 148, 69, 216, 131, 207 },
-                            PasswordSalt = new byte[] { 5, 243, 1, 59, 77, 70, 74, 11, 251, 199, 10, 200, 120, 18, 10, 228 },
+
+                            PasswordHash = new byte[] { 155, 72, 245, 72, 64, 109, 133, 79, 176, 154, 172, 168, 181, 30, 21, 75, 217, 70, 134, 112 },
+                            PasswordSalt = new byte[] { 124, 237, 105, 103, 235, 63, 40, 219, 231, 235, 228, 18, 230, 196, 190, 93 },
+
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -429,8 +433,10 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 97, 73, 105, 25, 15, 170, 39, 127, 43, 70, 159, 48, 214, 17, 191, 174, 93, 70, 26, 188 },
-                            PasswordSalt = new byte[] { 155, 147, 114, 207, 40, 109, 4, 72, 219, 199, 93, 167, 253, 105, 26, 121 },
+
+                            PasswordHash = new byte[] { 162, 206, 178, 98, 220, 151, 127, 144, 197, 121, 192, 252, 104, 20, 73, 228, 217, 172, 99, 227 },
+                            PasswordSalt = new byte[] { 127, 117, 10, 120, 116, 128, 82, 182, 212, 46, 175, 90, 43, 41, 217, 163 },
+
                             Role = "Admin",
                             Username = "Delton94"
                         });
