@@ -1,155 +1,107 @@
 import React, {Component} from 'react';
 import Page from './Page';
-import './Study.css'
+import './Study.css';
 import apiHelper from '../../helpers/api';
 
-const baseUrl = process.env.REACT_APP_BASE_API_URL;
+class Study extends Component {
+  state = {
+    questions: [],
+    currentQuestions: [],
+    languages: [],
+    currentQuestion: undefined,
+    answer: '',
+  };
 
-class Study extends Component {  
-  var = 2
-  counter = 0
-  questionVar = 0
-
-  constructor(){
-    super();
-      this.state = {
-        Question: {question: '', answer: ''}
-      }
-    this.getQuestions = this.getQuestions.bind(this);    
+  async componentWillMount() {
+    const result = await apiHelper.get('Language');
+    if (result) {
+      this.setState({languages: result});
+    }
   }
-   componentWillMount(){
-     this.getQuestions();
-     this.getChoices();
-   }
 
- getQuestions(url, params){
-   fetch(`${baseUrl}${'api/Question?languageId=' + this.var}`)
-   .then(response => {
-     if(response.ok) return response.json();
-     console.log(response)
-   })
-   .then(data => {
-     this.setState({question: data[this.questionVar].name })
-   })
-   .catch(error => {
-     console.log(error);
-   })
- }
+  getQuestions = async languageId => {
+    const questions = await apiHelper.get(`question?languageId=${languageId}`);
+    if (questions) {
+      this.setState({
+        currentQuestions: questions,
+        questions,
+        currentQuestion: questions[0],
+        answer: '',
+      });
+    }
+  };
 
- getChoices(url, params){
-  fetch(`${baseUrl}${'api/Question?languageId=' + this.var}`)
-  .then(response => {
-    if(response.ok) return response.json();
-    console.log(response)
-  })
-  .then(data => {
-   console.log(data)
-      this.setState({answer: data[this.questionVar].choices[0].name })
-  })
-  .catch(error => {
-    console.log(error);
-  })
-}
+  showAnswer = () => {
+    if (!this.state.currentQuestion) {
+      return;
+    }
 
- doAll(id){
-   this.var = id
-   this.getQuestions()
-   this.getChoices()
+    this.setState({
+      answer: this.state.currentQuestion.choices.find(x => x.isAnswer).name,
+    });
+  };
 
-   if(this.counter !=0 && this.counter % 2 != 0){
-     this.counter--
-     this.getQuestions()
-     this.getChoices()
-     this.switchVisible()
-   }
- }
-
- doAllChoices(){
-  this.counter++
-  if(this.counter > 3){
-    this.questionVar = 0
-    this.counter = 0
-    this.getQuestions()
-    this.getChoices()
-  }
-  else if(this.counter % 2 == 0){
-    this.questionVar = this.counter / 2
-    this.getQuestions()
-    this.getChoices()
-  }
-  this.switchVisible()
- }
-
-switchVisible() {
- 
-      if (document.getElementById('center-card-question').style.display == 'none') {
-          document.getElementById('center-card-question').style.display = 'inline-block';
-          document.getElementById('center-card-answer').style.display = 'none';
+  nextQuestion = () => {
+    this.setState(
+      {
+        currentQuestions: this.state.currentQuestions.filter(
+          x => x.name != this.state.currentQuestion.name
+        ),
+        currentQuestion: undefined,
+      },
+      () => {
+        if (this.state.currentQuestions.length > 0) {
+          this.setState({
+            currentQuestion: this.state.currentQuestions[0],
+            answer: '',
+          });
+        } else {
+          this.setState({
+            currentQuestions: this.state.questions,
+            currentQuestion: this.state.questions[0],
+            answer: '',
+          });
+        }
       }
-      else {
-          document.getElementById('center-card-question').style.display = 'none';
-          document.getElementById('center-card-answer').style.display = 'inline-block';
-      }
-}
-
+    );
+  };
 
   render() {
-  const element = document.getElementsByClassName('center-card')
     return (
       <Page header="Almost Studying..">
-        <div className='main-div'>
-          <div className='left-box'>
-           <nav className='left-nav'>
-            <ul className='navList'>
-            <button
-              className='language-link'
-              onClick={() => this.doAll(2)}     
-              autoFocus      
-            >
-              HTML
-            </button>
-
-            <button
-              className='language-link'
-              onClick={() => this.doAll(3)}
-            >
-              Java
-            </button>
-
-            <button
-              className='language-link'
-              onClick={() => this.doAll(1)}
-            >
-              JavaScript
-            </button>
-
-            <button
-              className='language-link'
-              onClick={() => this.doAll(4)}
-            >
-              C#
-            </button>
-            </ul>
-          </nav>
+        <div className="main-div">
+          <div className="left-box">
+            <nav className="left-nav">
+              <ul className="navList">
+                {this.state.languages.length &&
+                  this.state.languages.map((language, index) => (
+                    <button
+                      key={index}
+                      className="language-link"
+                      onClick={() => this.getQuestions(language.id)}
+                    >
+                      {language.name}
+                    </button>
+                  ))}
+              </ul>
+            </nav>
           </div>
-          <div className='center-card-question'
-          id='center-card-question'
-          onClick={() => this.doAllChoices()}
+          <div
+            className="center-card-question"
+            onClick={() =>
+              this.state.answer ? this.nextQuestion() : this.showAnswer()
+            }
           >
-            {`${this.state.question}`}
+            {this.state.currentQuestion
+              ? this.state.currentQuestion.name
+              : 'Select a language pls.'}
+            <br />
+            {this.state.answer}
           </div>
-          <div className='center-card-answer'
-          id='center-card-answer'
-          onClick={() => this.doAllChoices()}
-          >
-            {`${this.state.answer}`}
-          </div>
-          <div className='right-box'>
-           
-          </div>
+
+          <div className="right-box" />
         </div>
       </Page>
-      
     );
   }
 }
