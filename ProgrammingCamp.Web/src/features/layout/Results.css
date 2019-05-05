@@ -71,3 +71,35 @@
   margin: 0; 
   padding: 0; 
 } 
+
+.right-nav { 
+    align-items: top; 
+    background-color: hsl(0, 0%, 98%); 
+    display: center; 
+    font-size: 1 rem; 
+    height: 100%; 
+    padding-top: 1px; 
+    padding-left: 0px; 
+    padding-right: 0px; 
+    border-bottom: 1px solid hsl(0, 0%, 90%); 
+} 
+.past-quiz{
+    text-align: center; 
+    display: block; 
+    color: hsl(0, 0%, 45%); 
+    padding:0;
+    background: none;
+    border:4px solid transparent;
+    height: 50px; 
+    width: 130px; 
+    line-height: 50px; 
+    text-decoration: underline; 
+    white-space: nowrap;
+}
+.past-quiz:hover {  
+    color: hsl(240, 74%, 45%); 
+} 
+
+.past-quiz:active {
+    color: hsl(240, 74%, 45%); 
+}
