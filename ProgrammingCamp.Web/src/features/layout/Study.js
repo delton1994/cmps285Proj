@@ -95,7 +95,7 @@ switchVisible() {
   render() {
   const element = document.getElementsByClassName('center-card')
     return (
-      <Page header="Almost Studying..">
+      <Page header="Studying..">
         <div className='main-div'>
           <div className='left-box'>
            <nav className='left-nav'>
