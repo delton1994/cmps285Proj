@@ -1,10 +1,10 @@
 export const ROUTES = {
-  dashboard: '/',
+  Home: '/Home',
   Study: '/Study',
   Results: '/Results',
   Profile: '/Profile',
   JavaScript: '/Languages/JavaScript',
   Java: '/Languages/Java',
   CSharp: '/Languages/CSharp',
-  HTML: 'Study/Languages/HTML',
+  HTML: '/Languages/HTML',
 };

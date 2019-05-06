@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
 import './NavBar.css';
 import Movie from './Movie';
 import {ROUTES} from '../../constants';
@@ -13,7 +12,7 @@ class NavBar extends React.Component {
           className="navigation-link"
           exact
           activeClassName="selected"
-          to={ROUTES.dashboard}
+          to={ROUTES.Home}
         >
           Home
         </NavLink>
@@ -42,7 +41,7 @@ class NavBar extends React.Component {
             exact
             activeClassName='selected'
             to={ROUTES.Profile}>
-            Your Profile
+             Your Profile 
           </NavLink> 
           {/* <Movie /> Please include this ⚡*/}
           <button className="logout-button" onClick={this.props.handleLogout}>

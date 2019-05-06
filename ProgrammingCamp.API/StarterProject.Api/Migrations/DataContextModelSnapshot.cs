@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarterProject.Api.Data;
 
 namespace StarterProject.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190402193443_Adding-userResult")]
-    partial class AddinguserResult
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -374,19 +372,23 @@ namespace StarterProject.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AnswerCorrect");
+                    b.Property<int>("CorrectAnswer");
 
-                    b.Property<int>("AnswersIncorrect");
+                    b.Property<int>("IncorrectAnswer");
+
+                    b.Property<bool>("IsDeleted");
 
                     b.Property<int>("LanguageId");
 
                     b.Property<int>("Result");
 
+                    b.Property<int>("ResultId");
+
                     b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserResults");
+                    b.ToTable("UserResult");
                 });
 
             modelBuilder.Entity("StarterProject.Api.Features.Users.User", b =>
@@ -420,8 +422,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 199, 237, 223, 213, 226, 166, 84, 181, 69, 203, 187, 207, 54, 107, 231, 202, 158, 250, 76, 177 },
-                            PasswordSalt = new byte[] { 223, 10, 146, 81, 22, 148, 125, 21, 39, 150, 65, 210, 139, 239, 243, 111 },
+                            PasswordHash = new byte[] { 224, 236, 180, 9, 227, 107, 237, 121, 232, 245, 204, 21, 251, 214, 170, 5, 217, 111, 194, 12 },
+                            PasswordSalt = new byte[] { 100, 46, 192, 57, 26, 194, 141, 105, 1, 20, 218, 173, 3, 12, 238, 72 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -431,8 +433,8 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 178, 149, 184, 187, 93, 102, 29, 38, 253, 238, 114, 186, 188, 52, 18, 123, 47, 198, 219, 190 },
-                            PasswordSalt = new byte[] { 178, 12, 93, 196, 45, 138, 198, 131, 154, 13, 168, 129, 40, 231, 198, 95 },
+                            PasswordHash = new byte[] { 241, 10, 221, 66, 241, 201, 45, 41, 24, 144, 69, 189, 154, 139, 89, 185, 90, 3, 141, 62 },
+                            PasswordSalt = new byte[] { 50, 199, 94, 236, 195, 93, 43, 244, 191, 26, 123, 139, 53, 116, 186, 76 },
                             Role = "Admin",
                             Username = "Delton94"
                         });

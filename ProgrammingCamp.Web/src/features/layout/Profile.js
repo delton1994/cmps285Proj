@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import Page from './Page';
 import './Profile.css'
-
-import user from './user.png';
 import apiHelper from '../../helpers/api'
 
 class Profile extends Component {
   handleGetUsers = async() => {
     const response = await apiHelper.get('Users')
     if(response){
-      console.log(response)
+      var user = JSON.stringify(response,['id','username'])
+      console.log(user)
     }
   }
   render() {
@@ -21,8 +20,7 @@ class Profile extends Component {
         <p>Let's code</p>
         <p>aaa@selu.edu</p>
           {/* <button onClick={this.handleGetUsers}>Get Users</button> */}
-          
-        </div>
+         </div>
         <div className = "score">
      <h1>Average Score :</h1>
 
