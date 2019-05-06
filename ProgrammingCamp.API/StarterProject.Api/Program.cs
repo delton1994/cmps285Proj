@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace StarterProject.Api
 {
@@ -13,7 +14,12 @@ namespace StarterProject.Api
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args) 
+            .ConfigureAppConfiguration((ctx, builder) =>
+            {
+                builder.AddJsonFile("appsettings.json", false, true);
+                builder.AddJsonFile($"appsettings.mac.json", true, true);
+            })
                 .UseStartup<Startup>();
     }
 }
