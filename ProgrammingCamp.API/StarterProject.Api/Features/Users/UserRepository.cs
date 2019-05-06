@@ -43,13 +43,13 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    Id =x.UserId,
+                    UserId =x.UserId,
                     LanguageId = x.LanguageId,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .Where(x=>x.Id == userid)
+                .Where(x=>x.UserId == userid)
                 .ToList();
         }
 
@@ -61,13 +61,14 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
-                    Id = x.UserId,
+                    UserId = x.UserId,
                     LanguageId = x.LanguageId,
                     ResultId = x.Id,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
+
                 .Where(x=> x.Id == userid && x.LanguageId == languageId)
                 .ToList();
         }
@@ -88,7 +89,8 @@ namespace StarterProject.Api.Features.Users
 
             var userResultDto = new UserResultDto
             {
-                Id = result.UserId,
+                Id = result.Id,
+                UserId = userCreateResultDto.Id,
                 LanguageId = result.LanguageId,
                 Result = result.Result,
                 ResultId = result.Id,

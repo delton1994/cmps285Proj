@@ -13,7 +13,7 @@ class NavBar extends React.Component {
           className="navigation-link"
           exact
           activeClassName="selected"
-          to={ROUTES.dashboard}
+          to={ROUTES.Home}
         >
           Home
         </NavLink>

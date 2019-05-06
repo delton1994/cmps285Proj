@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace StarterProject.Api.Data.Entites
@@ -31,6 +32,7 @@ namespace StarterProject.Api.Data.Entites
             IsDeleted = false;
         }
         public int Id { get; set; }
+        public int UserId { get; set; }
         public int LanguageId { get; set; }
         public int ResultId { get; set; }
         public int Result { get; set; }
