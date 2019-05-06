@@ -12,16 +12,17 @@ namespace StarterProject.Api.Migrations
                 name: "UserResult",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy",
                             SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(nullable: false),
                     LanguageId = table.Column<int>(nullable: false),
                     Result = table.Column<int>(nullable: false),
                     CorrectAnswer = table.Column<int>(nullable: false),
                     IncorrectAnswer = table.Column<int>(nullable: false),
                     IsDeleted = table.Column<bool>(nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_UserResult", x => x.UserId); });
+                constraints: table => { table.PrimaryKey("PK_UserResult", x => x.Id); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

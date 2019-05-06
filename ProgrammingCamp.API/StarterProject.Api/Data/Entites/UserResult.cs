@@ -34,6 +34,7 @@ namespace StarterProject.Api.Data.Entites
         public int Id { get; set; }
         public int UserId { get; set; }
         public int LanguageId { get; set; }
+        public int ResultId { get; set; }
         public int Result { get; set; }
         public bool IsDeleted { get; set; }
         public int CorrectAnswer { get; set; }

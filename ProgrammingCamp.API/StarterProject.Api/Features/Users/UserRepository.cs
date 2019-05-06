@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace StarterProject.Api.Features.Users
     {
         UserResultDto CreateResult(UserCreateResultDto userCreateResultDto);
         List<UserResultDto> GetAllResult(int userid);
-        UserResultDto GetResult(int userid, int languageId);
+        List<UserResultDto> GetResult(int userid, int languageId);
         void DeleteResult(UserResult userResult);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
@@ -52,22 +53,24 @@ namespace StarterProject.Api.Features.Users
                 .ToList();
         }
 
-        public UserResultDto GetResult(int userid,int languageId)
+        public List<UserResultDto> GetResult(int userid, int languageId)
         {
 
 
             return _context
                 .Set<UserResult>()
-                .Where(x=>!x.IsDeleted)
                 .Select(x => new UserResultDto
                 {
                     UserId = x.UserId,
                     LanguageId = x.LanguageId,
+                    ResultId = x.Id,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .FirstOrDefault(x=>x.UserId== userid && x.LanguageId == languageId);
+
+                .Where(x=> x.Id == userid && x.LanguageId == languageId)
+                .ToList();
         }
 
 
@@ -90,6 +93,7 @@ namespace StarterProject.Api.Features.Users
                 UserId = userCreateResultDto.Id,
                 LanguageId = result.LanguageId,
                 Result = result.Result,
+                ResultId = result.Id,
                 CorrectAnswer = result.CorrectAnswer,
                 IncorrectAnswer = result.IncorrectAnswer
             };
