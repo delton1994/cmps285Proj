@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Page from './Page';
-import './Profile.css';
-import apiHelper from '../../helpers/api';
+import './Profile.css'
+import apiHelper from '../../helpers/api'
 
 class Profile extends Component {
   state = {
@@ -64,6 +64,13 @@ class Profile extends Component {
           <h1>Best Understood Language :</h1>
           <h1 className="points2"> {this.state.Name}</h1>
         </div>
+     </div>
+     <div className ="expert">
+     <h1>Best Understood Language :</h1>
+     <h1 className = "points2"> JavaScript</h1>
+     </div>
+
+    
       </Page>
     );
   }
