@@ -23,7 +23,7 @@ class MainLayout extends Component {
               component={() => <Home />} path={ROUTES.Home} />
              
             <Route component={() => <Study />} path={ROUTES.Study} />
-            <Route component={() => <Profile header='Profile' />}
+            <Route component={() => <Profile header= 'Profile' />}
               exact
               path={ROUTES.Profile} 
             />

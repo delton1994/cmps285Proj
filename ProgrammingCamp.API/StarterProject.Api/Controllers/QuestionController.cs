@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
@@ -25,7 +24,7 @@ namespace StarterProject.Api.Controllers
         public ActionResult Get()
         {
             var quest = _context.GetAllQuestions();
-            return Ok(quest);
+            return Ok(quest)
         }
 
         [HttpGet()]
