@@ -19,7 +19,7 @@ class Results extends Component {
   }
 
   handleGetUserResult = async languageId => {
-    const response = await apiHelper.get(
+    const response = apiHelper.get(
       `api/UserResults/${this.state.currentUser}/${languageId}`
     );
     if (response) {
@@ -33,27 +33,10 @@ class Results extends Component {
     }
   };
 
-  PastQuiz = () => {
-    this.setState(
-      {
-        userQuizzes: this.state.userQuizzes.filter(
-          x => x.correctAnswer !== this.state.currentQuiz.correctAnswer
-        ),
-        currentQuiz: undefined,
-      },
-      () => {
-        if (this.state.userQuizzes.length > 0) {
-          this.setState({
-            currentQuiz: this.state.userQuizzes[0],
-          });
-        } else {
-          this.setState({
-            userQuizzes: this.state.response,
-            currentQuiz: this.state.response[0],
-          });
-        }
-      }
-    );
+  pastQuiz = async resultId => {
+    this.setState({
+      currentQuiz: this.state.userQuizzes.find(x => x.resultId === resultId),
+    });
   };
 
   render() {
@@ -110,7 +93,7 @@ class Results extends Component {
                       <button
                         key={index}
                         className="past-quiz"
-                        onClick={() => this.PastQuiz()}
+                        onClick={() => this.pastQuiz(quiz.resultId)}
                       >
                         Quiz
                       </button>

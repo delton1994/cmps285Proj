@@ -63,6 +63,7 @@ namespace StarterProject.Api.Features.Users
                 {
                     Id = x.UserId,
                     LanguageId = x.LanguageId,
+                    ResultId = x.Id,
                     Result = x.Result,
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
@@ -90,6 +91,7 @@ namespace StarterProject.Api.Features.Users
                 Id = result.UserId,
                 LanguageId = result.LanguageId,
                 Result = result.Result,
+                ResultId = result.Id,
                 CorrectAnswer = result.CorrectAnswer,
                 IncorrectAnswer = result.IncorrectAnswer
             };
