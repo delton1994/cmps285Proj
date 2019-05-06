@@ -91,7 +91,6 @@ switchVisible() {
       }
 }
 
-
   render() {
   const element = document.getElementsByClassName('center-card')
     return (

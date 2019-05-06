@@ -1,0 +1,37 @@
+.information{
+    width: 100%;
+    float: left;
+    font-size: 30px;
+    color: purple;
+    text-align: center;
+
+}
+.wrapper{
+    width : 100%;
+    align-content: center;
+    align-items: center;
+}
+.score{
+    background: rgb(240, 236, 236);
+    width: 49%;
+    text-align: center;
+    font-size: 10px;
+    float: right;
+    text-align: center;
+}
+.points2{
+    font-size: 50px;
+    color: lightblue;
+}
+.points{
+    font-size: 180px;
+    color: lightgreen;
+}
+.expert{
+    background: rgb(240, 236, 236);
+    float: left;
+    text-align: center;
+    width: 49%;
+    font-size: 10px;
+    text-align: center;
+}  
