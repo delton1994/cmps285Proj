@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using StarterProject.Api.Common;
 using StarterProject.Api.Features.Users;
 using StarterProject.Api.Security;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
+using System.Threading;
+using System.Threading.Tasks;
 using StarterProject.Api.Data.Entites;
 
 namespace StarterProject.Api.Data
@@ -137,21 +138,13 @@ namespace StarterProject.Api.Data
                     new Choice {Name = "int variable", Id = 30, QuestionId = 8, IsAnswer = false},
                     new Choice {Name = "var", Id = 31, QuestionId = 8, IsAnswer = true},
                     new Choice {Name = "int var", Id = 32, QuestionId = 8, IsAnswer = false}
-
-
-
-
                 }
-
-            );
-
-
-
-
-
-
-
-
+            );  
         }
+        public DbSet<UserResult> UserResult { get; set; }
+            
+
+        
     }
 }
+

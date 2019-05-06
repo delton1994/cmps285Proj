@@ -7,34 +7,28 @@ namespace StarterProject.Api.Features.Languages
 {
     public interface ILanguageRepository
     {
-       
         List<LanguageGetDto> GetAllLanguages();
-
     }
 
     public class LanguageRepository : ILanguageRepository
     {
-        private readonly DataContext _language;
+        private readonly DataContext _context;
 
         public LanguageRepository(DataContext context)
         {
-            _language = context;
+            _context = context;
         }
 
         public List<LanguageGetDto> GetAllLanguages()
         {
-            return _language
-                .Set<Language>()
-                .Select(x => new LanguageGetDto()
-                {
-                    Id = x.Id,
-                    Name = x.Name
-                })
-                .ToList();
-
+            return _context.Set<Language>()
+            .Select(x => new LanguageGetDto()
+            {
+               Id = x.Id,
+               Name = x.Name
+            })
+            .ToList();
         }
-    }
-
-     
+    }   
 }
 
