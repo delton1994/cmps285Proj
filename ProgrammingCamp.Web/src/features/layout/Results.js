@@ -12,9 +12,9 @@ class Results extends Component {
   };
 
   async componentWillMount() {
-    const languages = await apiHelper.get(`api/Language`);
-    if (languages) {
-      this.setState({languages: languages});
+    const language = await apiHelper.get(`Language`);
+    if (language) {
+      this.setState({languages: language});
     }
   }
 
@@ -23,6 +23,7 @@ class Results extends Component {
       `api/UserResults/${this.state.currentUser}/${languageId}`
     );
     if (response) {
+      console.log(response);
       this.setState({
         currentQuiz: response[0],
         userQuizzes: response,
@@ -33,32 +34,17 @@ class Results extends Component {
     }
   };
 
-  PastQuiz = () => {
-    this.setState(
-      {
-        userQuizzes: this.state.userQuizzes.filter(
-          x => x.correctAnswer !== this.state.currentQuiz.correctAnswer
-        ),
-        currentQuiz: undefined,
-      },
-      () => {
-        if (this.state.userQuizzes.length > 0) {
-          this.setState({
-            currentQuiz: this.state.userQuizzes[0],
-          });
-        } else {
-          this.setState({
-            userQuizzes: this.state.response,
-            currentQuiz: this.state.response[0],
-          });
-        }
-      }
-    );
+  pastQuiz = async id => {
+    this.setState({
+      currentQuiz: this.state.userQuizzes.find(x => x.id === id),
+    });
+    console.log(this.state.currentQuiz.result);
   };
-
   render() {
     return (
       <Page header="Your Results">
+        <div className="left-text">Languages</div>
+        <div className="right-text">Quizzes</div>
         <div className="main-div">
           <div className="left-box">
             <nav className="left-nav">
@@ -84,7 +70,7 @@ class Results extends Component {
                 <div>
                   {this.state.currentQuiz.result
                     ? this.state.currentQuiz.result + ' %'
-                    : 'Select a language pls.'}
+                    : 'Select a language please.'}
                 </div>
                 <div>
                   {this.state.currentQuiz.correctAnswer
@@ -102,17 +88,14 @@ class Results extends Component {
           <div className="right-box">
             <nav className="right-nav">
               <ul className="navList">
-                Past Quiz:
-                <br />
-                <br />
                 {this.state.userQuizzes.length && this.state.userQuizzes
                   ? this.state.userQuizzes.map((quiz, index) => (
                       <button
                         key={index}
                         className="past-quiz"
-                        onClick={() => this.PastQuiz()}
+                        // onClick={() => this.pastQuiz()}
                       >
-                        Quiz
+                        Quiz {index + 1}
                       </button>
                     ))
                   : ' '}

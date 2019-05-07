@@ -61,6 +61,7 @@ namespace StarterProject.Api.Features.Users
                 .Set<UserResult>()
                 .Select(x => new UserResultDto
                 {
+                    Id = x.Id,
                     UserId = x.UserId,
                     LanguageId = x.LanguageId,
                     ResultId = x.Id,
@@ -68,7 +69,7 @@ namespace StarterProject.Api.Features.Users
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-                .Where(x=> x.Id == userid && x.LanguageId == languageId)
+                .Where(x=> x.UserId == userid && x.LanguageId == languageId)
                 .ToList();
         }
 

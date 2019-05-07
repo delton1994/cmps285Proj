@@ -14,7 +14,7 @@ class NavBar extends React.Component {
           activeClassName="selected"
           to={ROUTES.Home}
         >
-          Home
+          Programming Camp
         </NavLink>
 
         <NavLink
