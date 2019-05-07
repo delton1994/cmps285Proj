@@ -13,14 +13,12 @@ class Study extends Component {
   };
 
   async componentWillMount() {
-    const result = await apiHelper.get('Language');
-    if (result) {
-      this.setState({languages: result});
+    const languages = await apiHelper.get(`Language`);
+    if (languages) {
+      this.setState({languages: languages});
     }
+    this.getQuestions();
   }
-   componentWillMount(){
-     this.getQuestions();
-   }
 
   getQuestions = async languageId => {
     const questions = await apiHelper.get(`question?languageId=${languageId}`);

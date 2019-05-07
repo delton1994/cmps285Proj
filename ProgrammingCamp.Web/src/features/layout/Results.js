@@ -12,14 +12,14 @@ class Results extends Component {
   };
 
   async componentWillMount() {
-    const languages = await apiHelper.get(`api/Language`);
+    const languages = await apiHelper.get(`Language`);
     if (languages) {
       this.setState({languages: languages});
     }
   }
 
   handleGetUserResult = async languageId => {
-    const response = apiHelper.get(
+    const response = await apiHelper.get(
       `api/UserResults/${this.state.currentUser}/${languageId}`
     );
     if (response) {
