@@ -68,7 +68,6 @@ namespace StarterProject.Api.Features.Users
                     CorrectAnswer = x.CorrectAnswer,
                     IncorrectAnswer = x.IncorrectAnswer
                 })
-
                 .Where(x=> x.Id == userid && x.LanguageId == languageId)
                 .ToList();
         }
