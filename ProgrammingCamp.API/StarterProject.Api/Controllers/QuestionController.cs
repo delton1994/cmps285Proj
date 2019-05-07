@@ -24,7 +24,7 @@ namespace StarterProject.Api.Controllers
         public ActionResult Get()
         {
             var quest = _context.GetAllQuestions();
-            return Ok(quest)
+            return Ok(quest);
         }
 
         [HttpGet()]
