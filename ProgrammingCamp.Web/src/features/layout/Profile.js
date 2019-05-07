@@ -1,17 +1,21 @@
 import React, {Component} from 'react';
 import Page from './Page';
-import './Profile.css'
-import apiHelper from '../../helpers/api'
+import './Profile.css';
+import apiHelper from '../../helpers/api';
+import Results from './Results';
 
 class Profile extends Component {
   state = {
     currentUser: localStorage.getItem('Id'),
     userInfo: {},
-    userScore: [],
+    userScore: '',
     Name: '',
+    languageId: '',
     result: {},
+    languages: [],
+    language: '',
   };
-
+  var = this.state.languageId;
   async componentWillMount() {
     const userInfo = await apiHelper.get(`Users/${this.state.currentUser}`);
     if (userInfo) {
@@ -21,35 +25,26 @@ class Profile extends Component {
       `api/UserResults/GetAll/${this.state.currentUser}`
     );
     if (Score) {
-      this.setState({
-        userScore: Math.max.apply(
-          Math,
-          Score.map(function(score) {
-            return score.result;
-          })
-        ),
+      Score.map((result, index) => {
+        result.result > this.state.userScore
+          ? this.setState({userScore: result.result})
+          : console.log('result.result');
+      });
+      Score.map((result, index) => {
+        result.result >= this.state.userScore
+          ? this.setState({languageId: result.languageId})
+          : console.log();
       });
     }
+    // console.log(this.state.userScore);
+    console.log(this.state.languageId);
 
-    const result = await apiHelper.get(
-      `api/UserResults/GetAll/${this.state.currentUser}`
-    );
-    if (result) {
-      this.setState({
-        result: result.filter(x => x.result === this.state.userScore),
-      });
-      if (this.state.result[0].languageId === 1) {
-        this.setState({Name: 'JavaScript'});
-      } else if (this.state.result[0].languageId === 2) {
-        this.setState({Name: 'Html'});
-      } else if (this.state.result[0].languageId === 3) {
-        this.setState({Name: 'Java'});
-      } else if (this.state.result[0].languageId === 4) {
-        this.setState({Name: 'C#'});
-      }
+    const languageName = await apiHelper.get('api/Language');
+    if (languageName) {
+      this.setState({languages: languageName});
     }
+    console.log(this.state.languages);
   }
-
   render() {
     return (
       <Page header={'Welcome ' + this.state.userInfo.firstName}>
@@ -62,15 +57,8 @@ class Profile extends Component {
         </div>
         <div className="expert">
           <h1>Best Understood Language :</h1>
-          <h1 className="points2"> {this.state.Name}</h1>
+          <h1 className="points2">Java</h1>
         </div>
-     </div>
-     <div className ="expert">
-     <h1>Best Understood Language :</h1>
-     <h1 className = "points2"> JavaScript</h1>
-     </div>
-
-    
       </Page>
     );
   }
