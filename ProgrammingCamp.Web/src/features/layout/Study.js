@@ -68,7 +68,7 @@ class Study extends Component {
 
   render() {
     return (
-      <Page header="Almost Studying..">
+      <Page header="Your Study Page">
         <div className="left-text">Languages</div>
         <div className="right-text">Quizzes</div>
         <div className="main-div">
@@ -94,26 +94,24 @@ class Study extends Component {
               this.state.answer ? this.nextQuestion() : this.showAnswer()
             }
           >
+            <span className="click-text">
+              {this.state.currentQuestion ? 'Click for Answer.' : ''}
+            </span>
             <span className="question">
               <br />
               <br />
               {this.state.currentQuestion
                 ? this.state.currentQuestion.name
-                : 'Select a language pls.'}
+                : 'Select a language please.'}
             </span>
             <br />
             <span className="answer">{this.state.answer}</span>
           </div>
-
           <div className="right-box">
             <ul className="navList">
               {this.state.languages.length &&
                 this.state.languages.map((language, index) => (
-                  <button
-                    key={index}
-                    className="language-link"
-                    onClick={() => this.getQuestions(language.id)}
-                  >
+                  <button key={index} className="language-link">
                     {language.name}
                   </button>
                 ))}

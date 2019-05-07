@@ -35,6 +35,10 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.center-card-question:hover{
+    cursor:pointer;
+}
+
 
 .left-box {
     align-content: center;
@@ -82,8 +86,9 @@
 }
 
 .language-link:hover {
-    background-color: #428e92;
+    background-color: #00363a;
     color: hsl(0, 0%, 98%);
+    cursor:pointer;
 }
 
 .language-link:focus{
@@ -110,4 +115,10 @@
     padding-left: 10px;
     padding-right: 10px;
     overflow: auto;
+}
+
+.click-text{
+    line-height: 10px;
+    font-size: 10px;
+    color: gray;
 }
