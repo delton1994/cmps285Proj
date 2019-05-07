@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace StarterProject.Api.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class QuestionController : ControllerBase
     {
@@ -23,15 +23,8 @@ namespace StarterProject.Api.Controllers
         [ProducesResponseType(typeof(List<QuestionGetDto>), (int)HttpStatusCode.OK)]
         public ActionResult Get()
         {
-            try
-            {
                 return Ok(_context.GetAllQuestions());
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError($"Failed to find Question: {ex}");
-                return BadRequest("Failed to get Question. Please try again.");
-            } 
+           
         }
 
         [HttpGet()]
