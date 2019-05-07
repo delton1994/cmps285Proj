@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StarterProject.Api.Data;
 
 namespace StarterProject.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190507084951_New-Questions")]
+    partial class NewQuestions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -665,77 +667,6 @@ namespace StarterProject.Api.Migrations
                         });
                 });
 
-            modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CorrectAnswer");
-
-                    b.Property<int>("IncorrectAnswer");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<int>("LanguageId");
-
-                    b.Property<int>("Result");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserResult");
-                });
-
-            modelBuilder.Entity("StarterProject.Api.Features.Users.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<byte[]>("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt");
-
-                    b.Property<string>("Role");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Email = "admin@admin.com",
-                            FirstName = "Seeded-Admin-FirstName",
-                            LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 117, 202, 24, 46, 135, 219, 36, 252, 69, 27, 110, 123, 195, 23, 7, 89, 41, 226, 93, 23 },
-                            PasswordSalt = new byte[] { 254, 238, 92, 232, 227, 138, 136, 232, 69, 209, 64, 120, 63, 40, 180, 101 },
-                            Role = "Admin",
-                            Username = "admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Email = "delton_w@yahoo.com",
-                            FirstName = "Delton",
-                            LastName = "Watkins",
-                            PasswordHash = new byte[] { 51, 170, 6, 132, 40, 28, 122, 46, 137, 52, 99, 66, 156, 94, 57, 52, 135, 56, 83, 240 },
-                            PasswordSalt = new byte[] { 237, 226, 26, 214, 223, 14, 223, 1, 146, 156, 70, 46, 66, 51, 135, 179 },
-                            Role = "Admin",
-                            Username = "Delton94"
-                        });
-                });
 
             modelBuilder.Entity("StarterProject.Api.Data.Entites.Choice", b =>
                 {
