@@ -1,14 +1,15 @@
 .form-container {
     visibility: visible;
-    background-color: hsl(0, 0%, 98%);
+    background-color: #066064;;
     border-radius: 4px;
-    border-top: 5px solid  hsl(165, 68%, 61%);
+    border-top: 5px solid  #00392a;
     height: 325px;
     width: 340px;
+    color:white;
 }
 
 .header {
-    background-color: hsl(0, 0%, 91%);
+    background-color: #428e92;
     padding: 18px 24px;
     margin: 0px 0px 18px 0px;
 }
@@ -23,7 +24,7 @@
 .login-button {
     position: absolute;
     align-self: flex-end;
-    background-color: hsl(165, 0%, 80%);
+    background-color: #428e92;
     border: none;
     border-radius: 5px;
     color: white;
@@ -36,11 +37,11 @@
 }
 
 .login-button:hover{
-    background-color:  hsl(165, 68%, 61%);
+    background-color:  #00392a;
 }
 
 .login-button:active, .login-button:focus {
-    box-shadow: 0px 0px 1px 1px  hsl(165, 68%, 61%);;
+    box-shadow: 0px 0px 1px 1px  #00392a;
     outline: none;
 }
 
@@ -63,12 +64,13 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    color:white
 }
 
 .modal-content {
-    background-color: hsl(0, 0%, 98%);
+    background-color: #066064;
     border-radius: 4px;
-    border-top: 5px solid  hsl(165, 68%, 61%);
+    border-top: 5px solid  #00392a;
     padding: 5px;
     margin: auto;
     height: 450px;
@@ -76,7 +78,7 @@
   }
 
 .close {
-    color: #aaaaaa;
+    color: #00392a;
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -96,7 +98,7 @@
 .signUp-button {
     position: absolute;
     align-self: flex-start;
-    background-color: hsl(165, 0%, 80%);
+    background-color: #428e92;
     border: none;
     border-radius: 5px;
     color: white;
@@ -108,12 +110,12 @@
     width: 130px;
 }
 .signUp-button:hover{
-    background-color:  hsl(165, 68%, 61%);
+    background-color:  #00392a;
 }
 
 .submit-button {
     position: relative;
-    background-color: hsl(165, 0%, 80%);
+    background-color: #428e92;
     border: none;
     border-radius: 5px;
     color: white;
@@ -126,5 +128,5 @@
 }
 
 .submit-button:hover{
-    background-color:  hsl(165, 68%, 61%);
+    background-color:  #00392a;
 }

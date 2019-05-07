@@ -26,23 +26,23 @@ class NavBar extends React.Component {
         </NavLink>
 
         <NavLink
-          className='navigation-link'
+          className="navigation-link"
           exact
-          activeClassName='selected'
+          activeClassName="selected"
           to={ROUTES.Results}
         >
           Results
         </NavLink>
-        
 
         <div className="settings-container">
           <NavLink
-            className='navigation-link'
+            className="navigation-link"
             exact
-            activeClassName='selected'
-            to={ROUTES.Profile}>
-             Your Profile 
-          </NavLink> 
+            activeClassName="selected"
+            to={ROUTES.Profile}
+          >
+            Your Profile
+          </NavLink>
           {/* <Movie /> Please include this ⚡*/}
           <button className="logout-button" onClick={this.props.handleLogout}>
             Logout

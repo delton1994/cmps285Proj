@@ -4,6 +4,7 @@
     flex: 1;
     margin: 68px 24px 80px;
     padding: 12px;
+    background-color: hsl(0,0%,93%)
 }
 
 .page-header {

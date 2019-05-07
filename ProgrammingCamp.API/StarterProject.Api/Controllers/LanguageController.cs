@@ -9,7 +9,7 @@ using StarterProject.Api.Features.Languages;
 
 namespace StarterProject.Api.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class LanguageController : ControllerBase
     {
