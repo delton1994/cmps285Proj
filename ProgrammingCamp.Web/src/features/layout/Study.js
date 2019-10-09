@@ -119,6 +119,7 @@ class Study extends Component {
             </ul>
           </div>
         </div>
+        
       </Page>
     );
   }

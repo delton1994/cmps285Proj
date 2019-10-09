@@ -6,6 +6,10 @@ import Page from './Page';
 import {ROUTES} from '../../constants';
 import Study from './Study';
 import Profile from './Profile';
+import JavaScript from './JavaScript';
+import CSharp from './CSharp';
+import HTML from './HTML';
+import Java from './Java';
 import Results from './Results'
 import Home from './Home'
 
@@ -23,7 +27,11 @@ class MainLayout extends Component {
               component={() => <Home />} path={ROUTES.Home} />
              
             <Route component={() => <Study />} path={ROUTES.Study} />
-            <Route component={() => <Profile header= 'Profile' />}
+            <Route component={() => <JavaScript />} path={ROUTES.JavaScript}/>
+            <Route component={() => <CSharp />} path={ROUTES.CSharp}/>
+            <Route component={() => <HTML />} path={ROUTES.HTMl}/>
+            <Route component={() => <Java />} path={ROUTES.Java}/>
+            <Route component={() => <Profile header='Profile' />}
               exact
               path={ROUTES.Profile} 
             />
