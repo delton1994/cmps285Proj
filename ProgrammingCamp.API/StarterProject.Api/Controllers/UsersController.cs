@@ -7,6 +7,7 @@ using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Services;
 using System.Collections.Generic;
 using System.Net;
+using StarterProject.Api.Data.Entites;
 
 namespace StarterProject.Api.Controllers
 {
@@ -25,6 +26,9 @@ namespace StarterProject.Api.Controllers
             _userRepository = userRepository;
         }
 
+
+
+
         [AllowAnonymous]
         [HttpPost("[controller]/authenticate")]
         [ProducesResponseType(typeof(UserAuthenticationGetDto), (int) HttpStatusCode.OK)]
@@ -37,9 +41,9 @@ namespace StarterProject.Api.Controllers
 
             return Ok(userAuth);
         }
-        
+
         [HttpGet("[controller]")]
-        [ProducesResponseType(typeof(List<UserGetDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(List<UserGetDto>), (int) HttpStatusCode.OK)]
         public IActionResult GetAll()
         {
             var users = _userRepository.GetAllUsers();
@@ -47,15 +51,15 @@ namespace StarterProject.Api.Controllers
         }
 
         [HttpGet("[controller]/{userId:int}")]
-        [ProducesResponseType(typeof(UserGetDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(UserGetDto), (int) HttpStatusCode.OK)]
         public IActionResult Get(int userId)
         {
             var user = _userRepository.GetUser(userId);
             return Ok(user);
         }
-        
+
         [HttpPost("[controller]")]
-        [ProducesResponseType(typeof(UserGetDto), (int)HttpStatusCode.Created)]
+        [ProducesResponseType(typeof(UserGetDto), (int) HttpStatusCode.Created)]
         public IActionResult Post([FromBody] UserCreateDto userCreateDto)
         {
             var user = _userRepository.CreateUser(userCreateDto);
@@ -63,7 +67,7 @@ namespace StarterProject.Api.Controllers
         }
 
         [HttpPut("[controller]/{userId:int}")]
-        [ProducesResponseType(typeof(UserGetDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(UserGetDto), (int) HttpStatusCode.OK)]
         public IActionResult Put(int userId, [FromBody] UserEditDto userEditDto)
         {
             var user = _userRepository.EditUser(userId, userEditDto);
@@ -73,7 +77,7 @@ namespace StarterProject.Api.Controllers
         //[Authorize(Roles = Constants.Users.Roles.Admin)]
         [Authorize(Policy = Constants.Policies.CanChangeUserRole)]
         [HttpPut("[controller]/{userId:int}/Role")]
-        [ProducesResponseType(typeof(UserGetDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(UserGetDto), (int) HttpStatusCode.OK)]
         public IActionResult PutRole(int userId, [FromBody] UserRoleEditDto userRoleEditDto)
         {
             var user = _userRepository.EditUserRole(userId, userRoleEditDto);
@@ -81,11 +85,15 @@ namespace StarterProject.Api.Controllers
         }
 
         [HttpDelete("[controller]/{userId:int}")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int) HttpStatusCode.OK)]
         public IActionResult Delete(int userId)
         {
             _userRepository.DeleteUser(userId);
             return Ok();
         }
+
+        
+
+     
     }
 }

@@ -7,31 +7,27 @@ namespace StarterProject.Api.Features.Choices
 {
     public interface IChoiceRepository
     {
-        IEnumerable<Choice> GetAllChoices();
-        List<Choice> GetChoicesByName(string name);
-
+        List<ChoiceGetDto> GetAllChoices();
     }
 
     public class ChoiceRepository : IChoiceRepository
     {
-        private readonly DataContext _choice;
+        private readonly DataContext _context;
 
         public ChoiceRepository(DataContext context)
         {
-            _choice = context;
+            _context = context;
         }
 
-        public IEnumerable<Choice> GetAllChoices()
+        public List<ChoiceGetDto> GetAllChoices()
         {
-            return _choice.Choices
-                .OrderBy(p => p.QuestionId)
-                .ToList();
-        }
-
-        public List<Choice> GetChoicesByName(string name)
-        {
-            return _choice.Choices
-                .Where(p => p.Name == name)
+            return _context
+                .Set<Choice>()
+                .Select(x => new ChoiceGetDto()
+                {
+                    QuestionId = x.QuestionId,
+                    Name = x.Name
+                })
                 .ToList();
         }
 

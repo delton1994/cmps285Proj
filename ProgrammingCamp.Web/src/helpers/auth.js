@@ -6,6 +6,7 @@ export const authenticate = (username, password) => {
     .then(response => {
       if (response.token) {
         localStorage.setItem('token', response.token);
+        localStorage.setItem('Id' , response.userId);
         apiHelper.setAuthHeader(`Bearer ${response.token}`);
       }
 

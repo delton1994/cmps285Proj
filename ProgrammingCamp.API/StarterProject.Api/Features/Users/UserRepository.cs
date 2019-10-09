@@ -1,14 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using StarterProject.Api.Common;
 using StarterProject.Api.Data;
+using StarterProject.Api.Data.Entites;
 using StarterProject.Api.Features.Users.Dtos;
 using StarterProject.Api.Security;
+using UserResultDto = StarterProject.Api.Data.Entites.UserResultDto;
 
 namespace StarterProject.Api.Features.Users
 {
     public interface IUserRepository
     {
+        UserResultDto CreateResult(UserCreateResultDto userCreateResultDto);
+        List<UserResultDto> GetAllResult(int userid);
+        List<UserResultDto> GetResult(int userid, int languageId);
+        void DeleteResult(UserResult userResult);
         UserGetDto GetUser(int userId);
         List<UserGetDto> GetAllUsers();
         UserGetDto CreateUser(UserCreateDto userCreateDto);
@@ -24,6 +35,76 @@ namespace StarterProject.Api.Features.Users
         public UserRepository(DataContext context)
         {
             _context = context;
+        }
+
+        public List<UserResultDto> GetAllResult(int userid)
+        {
+            return _context
+                .Set<UserResult>()
+                .Select(x => new UserResultDto
+                {
+                    UserId =x.UserId,
+                    LanguageId = x.LanguageId,
+                    Result = x.Result,
+                    CorrectAnswer = x.CorrectAnswer,
+                    IncorrectAnswer = x.IncorrectAnswer
+                })
+                .Where(x=>x.UserId == userid)
+                .ToList();
+        }
+
+        public List<UserResultDto> GetResult(int userid, int languageId)
+        {
+
+
+            return _context
+                .Set<UserResult>()
+                .Select(x => new UserResultDto
+                {
+                    Id = x.Id,
+                    UserId = x.UserId,
+                    LanguageId = x.LanguageId,
+                    ResultId = x.Id,
+                    Result = x.Result,
+                    CorrectAnswer = x.CorrectAnswer,
+                    IncorrectAnswer = x.IncorrectAnswer
+                })
+                .Where(x=> x.UserId == userid && x.LanguageId == languageId)
+                .ToList();
+        }
+
+
+        public UserResultDto CreateResult(UserCreateResultDto userCreateResultDto)
+        {
+            var result = new UserResult
+            {
+               UserId = userCreateResultDto.Id,
+               LanguageId = userCreateResultDto.LanguageId,
+               Result = userCreateResultDto.Result,
+               CorrectAnswer =  userCreateResultDto.CorrectAnswer,
+               IncorrectAnswer = userCreateResultDto.IncorrectAnswer
+            };
+            _context.Set<UserResult>().Add(result);
+            _context.SaveChanges();
+
+            var userResultDto = new UserResultDto
+            {
+                Id = result.Id,
+                UserId = userCreateResultDto.Id,
+                LanguageId = result.LanguageId,
+                Result = result.Result,
+                ResultId = result.Id,
+                CorrectAnswer = result.CorrectAnswer,
+                IncorrectAnswer = result.IncorrectAnswer
+            };
+            
+            return userResultDto;
+        }
+        public void DeleteResult(UserResult userResult)
+        {
+           userResult.IsDeleted = true;
+           _context.Update(userResult);
+           _context.SaveChanges();
         }
 
         public UserGetDto GetUser(int userId)
@@ -42,6 +123,7 @@ namespace StarterProject.Api.Features.Users
                 .FirstOrDefault(x => x.Id == userId);
         }
 
+
         public List<UserGetDto> GetAllUsers()
         {
             return _context
@@ -57,6 +139,8 @@ namespace StarterProject.Api.Features.Users
                 })
                 .ToList();
         }
+
+        
 
         public UserGetDto CreateUser(UserCreateDto userCreateDto)
         {

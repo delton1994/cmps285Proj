@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using StarterProject.Api.Data.Entites;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -8,25 +9,29 @@ using StarterProject.Api.Features.Languages;
 
 namespace StarterProject.Api.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class LanguageController : ControllerBase
     {
-        private readonly ILanguageRepository _languageRepository;
+
+        private readonly ILanguageRepository _context;
+
         private readonly ILogger<LanguageController> _logger;
 
-        public LanguageController(ILanguageRepository languageRepository, ILogger<LanguageController> logger)
+        public LanguageController(ILanguageRepository context, ILogger<LanguageController> logger)
         {
-            _languageRepository = languageRepository;
+            _context = context;
             _logger = logger;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Language>> Get()
+        [ProducesResponseType(typeof(List<LanguageGetDto>), (int)HttpStatusCode.OK)]
+        public ActionResult Get()
         {
             try
             {
-                return Ok(_languageRepository.GetAllLanguages());
+                 var lang =_context.GetAllLanguages();
+                 return Ok(lang);
             }
             catch (Exception ex)
             {
