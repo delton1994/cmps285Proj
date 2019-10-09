@@ -4,10 +4,12 @@
     flex: 1;
     margin: 68px 24px 80px;
     padding: 12px;
-  }
+    background-color: hsl(0,0%,93%)
+}
 
 .page-header {
     font-size: 1.1rem;
     font-weight: bold;
     padding: 10px 3px 16px;
+    text-align: center;
 }

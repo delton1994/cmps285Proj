@@ -9,17 +9,18 @@ using StarterProject.Api.Features.Languages;
 
 namespace StarterProject.Api.Controllers
 {
-    [Route("api/[Controller]")]
+    [Route("[Controller]")]
     [ApiController]
     public class LanguageController : ControllerBase
     {
 
-        private readonly ILanguageRepository _languageRepository;
+        private readonly ILanguageRepository _context;
+
         private readonly ILogger<LanguageController> _logger;
 
-        public LanguageController(ILanguageRepository languageRepository, ILogger<LanguageController> logger)
+        public LanguageController(ILanguageRepository context, ILogger<LanguageController> logger)
         {
-            _languageRepository = languageRepository;
+            _context = context;
             _logger = logger;
         }
 
@@ -29,7 +30,8 @@ namespace StarterProject.Api.Controllers
         {
             try
             {
-                return Ok(_languageRepository.GetAllLanguages());
+                 var lang =_context.GetAllLanguages();
+                 return Ok(lang);
             }
             catch (Exception ex)
             {

@@ -41,8 +41,10 @@ namespace StarterProject.Api
                 .AddFluentValidation(options =>
                 {
                     options.RegisterValidatorsFromAssemblyContaining<Startup>();
-                });
-             
+                })
+                .AddJsonOptions(
+            options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
 
             SetupDatabase(services);
             SetupAuthentication(services);
@@ -55,6 +57,7 @@ namespace StarterProject.Api
 
         private void SetupDatabase(IServiceCollection services)
         {
+            var test = Configuration.GetConnectionString("DataContext");
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
 

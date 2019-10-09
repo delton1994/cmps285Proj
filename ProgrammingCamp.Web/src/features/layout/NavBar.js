@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
-
 import './NavBar.css';
 import Movie from './Movie';
 import {ROUTES} from '../../constants';
@@ -13,9 +12,9 @@ class NavBar extends React.Component {
           className="navigation-link"
           exact
           activeClassName="selected"
-          to={ROUTES.dashboard}
+          to={ROUTES.Home}
         >
-          Home
+          Programming Camp
         </NavLink>
 
         <NavLink
@@ -25,18 +24,26 @@ class NavBar extends React.Component {
         >
           Study
         </NavLink>
-        
+
         <NavLink
-          className='navigation-link'
+          className="navigation-link"
           exact
-          activeClassName='selected'
-          to={ROUTES.Profile}>
-          {this.props.currentUser.name}'s Profile
-        </NavLink> 
+          activeClassName="selected"
+          to={ROUTES.Results}
+        >
+          Results
+        </NavLink>
 
         <div className="settings-container">
+          <NavLink
+            className="navigation-link"
+            exact
+            activeClassName="selected"
+            to={ROUTES.Profile}
+          >
+            Your Profile
+          </NavLink>
           {/* <Movie /> Please include this ⚡*/}
-          <span className="greeting">{this.props.currentUser.name}'s Profile</span>
           <button className="logout-button" onClick={this.props.handleLogout}>
             Logout
           </button>

@@ -15,7 +15,8 @@ class App extends Component {
     authenticate(credentials.username, credentials.password).then(response => {
       console.log(response);
 
-      if (response.success) {
+
+      if (response.token) {
         this.setState({
           currentUser: {name: response.firstName},
         });
