@@ -678,14 +678,8 @@ namespace StarterProject.Api.Migrations
                     b.Property<bool>("IsDeleted");
 
                     b.Property<int>("LanguageId");
-
-                    b.Property<int>("Result");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserResult");
+                    b.HasIndex("UserId");
+                    b.ToTable("UserResults");
                 });
 
             modelBuilder.Entity("StarterProject.Api.Features.Users.User", b =>
@@ -719,8 +713,8 @@ namespace StarterProject.Api.Migrations
                             Email = "admin@admin.com",
                             FirstName = "Seeded-Admin-FirstName",
                             LastName = "Seeded-Admin-LastName",
-                            PasswordHash = new byte[] { 117, 202, 24, 46, 135, 219, 36, 252, 69, 27, 110, 123, 195, 23, 7, 89, 41, 226, 93, 23 },
-                            PasswordSalt = new byte[] { 254, 238, 92, 232, 227, 138, 136, 232, 69, 209, 64, 120, 63, 40, 180, 101 },
+                            PasswordHash = new byte[] { 79, 222, 177, 170, 138, 247, 109, 192, 115, 134, 146, 149, 117, 54, 185, 68, 139, 27, 157, 212 },
+                            PasswordSalt = new byte[] { 229, 56, 244, 109, 28, 23, 144, 179, 118, 241, 95, 243, 124, 26, 96, 68 },
                             Role = "Admin",
                             Username = "admin"
                         },
@@ -730,8 +724,9 @@ namespace StarterProject.Api.Migrations
                             Email = "delton_w@yahoo.com",
                             FirstName = "Delton",
                             LastName = "Watkins",
-                            PasswordHash = new byte[] { 51, 170, 6, 132, 40, 28, 122, 46, 137, 52, 99, 66, 156, 94, 57, 52, 135, 56, 83, 240 },
-                            PasswordSalt = new byte[] { 237, 226, 26, 214, 223, 14, 223, 1, 146, 156, 70, 46, 66, 51, 135, 179 },
+
+                            PasswordHash = new byte[] { 22, 98, 14, 24, 53, 192, 174, 166, 26, 49, 74, 247, 96, 198, 183, 94, 146, 4, 245, 51 },
+                            PasswordSalt = new byte[] { 244, 66, 48, 219, 228, 56, 81, 57, 5, 255, 76, 222, 15, 0, 47, 50 },
                             Role = "Admin",
                             Username = "Delton94"
                         });
@@ -750,6 +745,14 @@ namespace StarterProject.Api.Migrations
                     b.HasOne("StarterProject.Api.Data.Entites.Language", "Language")
                         .WithMany("Questions")
                         .HasForeignKey("LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("StarterProject.Api.Data.Entites.UserResult", b =>
+                {
+                    b.HasOne("StarterProject.Api.Features.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

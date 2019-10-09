@@ -21,7 +21,7 @@ namespace StarterProject.Api.Data
         public DbSet<Language> Languages { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Choice> Choices { get; set; }
-
+        public DbSet<UserResult> UserResults { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var passwordHasher = new PasswordHash("admin");
